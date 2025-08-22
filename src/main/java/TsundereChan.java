@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class TsundereChan {
     private final String LINE = "***************************************";
-    private Task[] list = new Task[100];
+    private final Task[] list = new Task[100];
     private int pointer = 0;
 
     public void run() {
@@ -40,14 +40,51 @@ public class TsundereChan {
                 this.unmark(index);
                 break;
             default:
-                this.addToList(command);
+                this.addToList(string);
         }
+        sc.close();
     }
 
-    public void addToList(String item) {
-        list[pointer] = new Task(item);
+    public void addToList(String command) {
+        Scanner sc = new Scanner(command);
+        String task = sc.next();
+        String str = "";
+        // Check for correct format: more words after task word
+        if (!sc.hasNextLine()) {
+            System.out.println(LINE + "\nYou need to include the task description, or I can't help you, doofus!\n" + LINE);
+            return;
+        }
+        str = sc.nextLine().trim();
+        switch (task) {
+            case "todo":
+                list[pointer] = new Todo(str);
+                break;
+            case "deadline":
+                String[] deadline = str.split("/by", 2);
+                if (deadline.length < 2) {
+                    System.out.println(LINE + "\nYou need to include /by, dummy!\n" + LINE);
+                    return;
+                }
+                list[pointer] = new Deadline(deadline[0].trim(), deadline[1].trim());
+                break;
+            case "event":
+                String[] event = str.split("/from|/to", 3);
+                if (event.length < 3) {
+                    System.out.println(LINE + "\nYou need to include both /from and /to, IN THAT ORDER, dummy!\n" + LINE);
+                    return;
+                }
+                list[pointer] = new Event(event[0].trim(), event[1].trim(), event[2].trim());
+                break;
+            default:
+                System.out.println(LINE + "\nYou need to include a keyword, or I can't help you, doofus!\n" + LINE);
+                return;
+        }
+        sc.close();
         pointer++;
-        System.out.println(LINE + "\nadded: " + item + "\n" + LINE);
+        System.out.println(LINE + "\nI'll do you a favour and add this task for you, but you better not expect anything more!");
+        System.out.println("    " + list[pointer-1]);
+        System.out.println("Now you have " + pointer + " tasks in your list. Better get to work!");
+        System.out.println(LINE);
     }
 
     public void printList() {
@@ -92,7 +129,7 @@ public class TsundereChan {
         }
         task.unmark();
         System.out.println(LINE);
-        System.out.println("And I thought you couldn't get any worse...");
+        System.out.println("And here I was, expecting something from you... Why do I feel disappointed?");
         System.out.println("    " + task);
         System.out.println(LINE);
     }
