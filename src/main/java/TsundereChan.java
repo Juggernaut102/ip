@@ -24,6 +24,7 @@ public class TsundereChan {
     public void action(String string) {
         Scanner sc = new Scanner(string);
         String command = sc.next();
+        int index;
         switch (command) {
             case "list":
                 this.printList();
@@ -31,11 +32,12 @@ public class TsundereChan {
             case "bye":
                 break;
             case "mark":
-                int index = sc.nextInt();
+                index = sc.nextInt();
                 this.mark(index);
                 break;
             case "unmark":
-                //this.unmark();
+                index = sc.nextInt();
+                this.unmark(index);
                 break;
             default:
                 this.addToList(command);
@@ -74,6 +76,23 @@ public class TsundereChan {
         task.mark();
         System.out.println(LINE);
         System.out.println("W-well, it seems even you can get something done, I guess...");
+        System.out.println("    " + task);
+        System.out.println(LINE);
+    }
+
+    public void unmark(int index) {
+        if (index < 1 ||  index > pointer) {
+            System.out.println(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE);
+            return;
+        }
+        Task task = list[index-1];
+        if (!task.isDone) {
+            System.out.println(LINE + "\nIt's not even done yet, geeez!\n" + LINE);
+            return;
+        }
+        task.unmark();
+        System.out.println(LINE);
+        System.out.println("And I thought you couldn't get any worse...");
         System.out.println("    " + task);
         System.out.println(LINE);
     }
