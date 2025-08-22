@@ -8,7 +8,15 @@ public class Task {
     }
 
     public String getStatusIcon() {
-        return isDone ? "X" : "";
+        return isDone ? "X" : " ";
+    }
+
+    public void mark() {
+        isDone = true;
+    }
+
+    public void unmark() {
+        isDone = false;
     }
 
     @Override
