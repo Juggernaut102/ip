@@ -9,7 +9,7 @@ public class TsundereChan {
         Scanner sc = new Scanner(System.in);
         String command = sc.nextLine();
         while (!command.equals("bye")) {
-            System.out.println(command + "\n" + LINE);
+            System.out.println(LINE + "\n" + command + "\n" + LINE);
             command = sc.nextLine();
         }
         System.out.println(LINE + "\nHmph, done already? D-don't talk to me anymore, you fool!" +
