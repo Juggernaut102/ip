@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class TsundereChan {
     private final String LINE = "***************************************";
-    private String[] list = new String[100];
+    private Task[] list = new Task[100];
     private int pointer = 0;
 
     public void run() {
@@ -12,11 +12,7 @@ public class TsundereChan {
         Scanner sc = new Scanner(System.in);
         String command = sc.nextLine();
         while (!command.equals("bye")) {
-            if (command.equals("list")) {
-                this.printList();
-            } else {
-                this.addToList(command);
-            }
+            this.action(command);
             command = sc.nextLine();
         }
         System.out.println(LINE + "\nHmph, done already? D-don't talk to me anymore, you idiot!\n" +
@@ -24,8 +20,18 @@ public class TsundereChan {
                 + LINE);
     }
 
+    public void action(String command) {
+        switch (command) {
+            case "list":
+                this.printList();
+                break;
+            default:
+                this.addToList(command);
+        }
+    }
+
     public void addToList(String item) {
-        list[pointer] = item;
+        list[pointer] = new Task(item);
         pointer++;
         System.out.println(LINE + "\nadded: " + item + "\n" + LINE);
     }
