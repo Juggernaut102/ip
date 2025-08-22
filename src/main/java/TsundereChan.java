@@ -75,7 +75,7 @@ public class TsundereChan {
         }
         task.mark();
         System.out.println(LINE);
-        System.out.println("W-well, it seems even you can get something done, I guess...");
+        System.out.println("W-well, it seems even you can get something done, I guess... N-not like I'm impressed or anything!");
         System.out.println("    " + task);
         System.out.println(LINE);
     }
