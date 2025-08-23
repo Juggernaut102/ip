@@ -55,13 +55,20 @@ public class TsundereChan {
                 index = sc.nextInt();
                 this.unmark(index);
                 break;
+            case "delete":
+                if (!sc.hasNextInt()) {
+                    throw new IllegalArgumentException(LINE + "\nYou must have a task number after delete!\n" + LINE);
+                }
+                index = sc.nextInt();
+                this.delete(index);
+                break;
             default:
-                this.addToList(string);
+                this.addTask(string);
         }
         sc.close();
     }
 
-    public void addToList(String command) {
+    public void addTask(String command) {
         Scanner sc = new Scanner(command);
         String task = sc.next();
         String str;
@@ -153,6 +160,19 @@ public class TsundereChan {
         System.out.println(LINE);
         System.out.println("And here I was, expecting something from you... Why do I feel disappointed?");
         System.out.println("    " + task);
+        System.out.println(LINE);
+    }
+
+    public void delete(int index) {
+        if (index < 1 ||  index > pointer) {
+            throw new IllegalArgumentException(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE);
+        }
+        Task task = list.remove(index-1);
+        pointer--;
+        System.out.println(LINE + "\nHmph, fine. I'll remove this task, so you better be thankful.");
+        System.out.println("    " + task);
+        System.out.println("Now you only have " + pointer + " tasks in your list. " +
+                "U-um, it's not like I care or anything but, you can probably take a little break now, right?");
         System.out.println(LINE);
     }
 
