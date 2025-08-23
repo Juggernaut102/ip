@@ -1,8 +1,9 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TsundereChan {
     protected static final String LINE = "***************************************";
-    private final Task[] list = new Task[100];
+    private final ArrayList<Task> list = new ArrayList<>();
     private int pointer = 0;
 
     public void run() {
@@ -71,7 +72,7 @@ public class TsundereChan {
                             " at least, or I can't help you, doofus!");
                 }
                 str = sc.nextLine().trim();
-                list[pointer] = new Todo(str);
+                list.add(new Todo(str));
                 break;
             case "deadline":
                 if (!sc.hasNextLine()) {
@@ -83,7 +84,8 @@ public class TsundereChan {
                 if (deadline.length < 2) {
                     throw new InsufficientInformationException("You need to include /by, dummy!");
                 }
-                list[pointer] = new Deadline(deadline[0].trim(), deadline[1].trim());
+                Task t = new Deadline(deadline[0].trim(), deadline[1].trim());
+                list.add(t);
                 break;
             case "event":
                 if (!sc.hasNextLine()) {
@@ -95,7 +97,8 @@ public class TsundereChan {
                 if (event.length < 3) {
                     throw new InsufficientInformationException("You need to include both /from and /to, IN THAT ORDER, dummy!");
                 }
-                list[pointer] = new Event(event[0].trim(), event[1].trim(), event[2].trim());
+                Task t2 = new Event(event[0].trim(), event[1].trim(), event[2].trim());
+                list.add(t2);
                 break;
             default:
                 throw new InsufficientInformationException("You need to include a keyword, " +
@@ -103,20 +106,19 @@ public class TsundereChan {
         }
         sc.close();
         pointer++;
-        System.out.println(LINE + "\nI'll do you a favour and add this task for you, but you better not expect anything more!");
-        System.out.println("    " + list[pointer-1]);
+        System.out.println(LINE + "\nW-well, I guess I can help you just this once. B-but don't expect this everytime, got it?!");
+        System.out.println("    " + list.get(pointer-1));
         System.out.println("Now you have " + pointer + " tasks in your list. Better get to work!");
         System.out.println(LINE);
     }
 
     public void printList() {
         if (pointer == 0) {
-            System.out.println(LINE + "\nWhat?? There's nothing to list, you idiot!\n" + LINE);
-            return;
+            throw new IllegalArgumentException(LINE + "\nWhat?? There's nothing to list, you idiot!\n" + LINE);
         }
         System.out.println(LINE);
         for (int i = 0; i < pointer; i++) {
-            String output = String.format("%d.%s", i+1, list[i]);
+            String output = String.format("%d.%s", i+1, list.get(i));
             System.out.println(output);
         }
         System.out.println(LINE);
@@ -126,7 +128,7 @@ public class TsundereChan {
         if (index < 1 ||  index > pointer) {
             throw new IllegalArgumentException(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE);
         }
-        Task task = list[index-1];
+        Task task = list.get(index-1);
         if (task.isDone) {
             System.out.println(LINE + "\nYou've already asked me to mark it, geez!\n" + LINE);
             return;
@@ -142,7 +144,7 @@ public class TsundereChan {
         if (index < 1 ||  index > pointer) {
             throw new IllegalArgumentException(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE);
         }
-        Task task = list[index-1];
+        Task task = list.get(index-1);
         if (!task.isDone) {
             System.out.println(LINE + "\nIt's not even done yet, geeez!\n" + LINE);
             return;
