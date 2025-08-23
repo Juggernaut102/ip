@@ -1,12 +1,20 @@
+list
 todo read book
 list
 deadline homework /by Monday
-event CCA /from Tues 5pm /to 9pm
+event
+event CCA
+event CCA /from monday 12pm /to 2pm
 list
+mark 0
 mark 1
 list
 mark 2
 mark 3
+list
 unmark 2
 list
+delete 2
+list
+delete -1
 bye
