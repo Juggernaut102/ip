@@ -1,7 +1,57 @@
-Hello from
- ____        _        
-|  _ \ _   _| | _____ 
-| | | | | | | |/ / _ \
-| |_| | |_| |   <  __/
-|____/ \__,_|_|\_\___|
-
+***************************************
+Hmph! I'm Tsundere-chan.
+What do you want? N-Not like I want to help you or anything...
+***************************************
+***************************************
+I'll do you a favour and add this task for you, but you better not expect anything more!
+    [T][ ] read book
+Now you have 1 tasks in your list. Better get to work!
+***************************************
+***************************************
+1.[T][ ] read book
+***************************************
+***************************************
+I'll do you a favour and add this task for you, but you better not expect anything more!
+    [D][ ] homework (by: Monday)
+Now you have 2 tasks in your list. Better get to work!
+***************************************
+***************************************
+I'll do you a favour and add this task for you, but you better not expect anything more!
+    [E][ ] CCA (from: Tues 5pm to: 9pm)
+Now you have 3 tasks in your list. Better get to work!
+***************************************
+***************************************
+1.[T][ ] read book
+2.[D][ ] homework (by: Monday)
+3.[E][ ] CCA (from: Tues 5pm to: 9pm)
+***************************************
+***************************************
+W-well, it seems even you can get something done, I guess... N-not like I'm impressed or anything!
+    [T][X] read book
+***************************************
+***************************************
+1.[T][X] read book
+2.[D][ ] homework (by: Monday)
+3.[E][ ] CCA (from: Tues 5pm to: 9pm)
+***************************************
+***************************************
+W-well, it seems even you can get something done, I guess... N-not like I'm impressed or anything!
+    [D][X] homework (by: Monday)
+***************************************
+***************************************
+W-well, it seems even you can get something done, I guess... N-not like I'm impressed or anything!
+    [E][X] CCA (from: Tues 5pm to: 9pm)
+***************************************
+***************************************
+And here I was, expecting something from you... Why do I feel disappointed?
+    [D][ ] homework (by: Monday)
+***************************************
+***************************************
+1.[T][X] read book
+2.[D][ ] homework (by: Monday)
+3.[E][X] CCA (from: Tues 5pm to: 9pm)
+***************************************
+***************************************
+Hmph, done already? D-don't talk to me anymore, you idiot!
+It's not like I enjoy talking to you or anything...
+***************************************
