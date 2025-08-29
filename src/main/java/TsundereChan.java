@@ -1,11 +1,24 @@
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TsundereChan {
     protected static final String LINE = "***************************************";
-    private final ArrayList<Task> list = new ArrayList<>();
+    private ArrayList<Task> list = new ArrayList<>();
     private int pointer = 0;
-    private Storage storage = new Storage("./data/TsundereChan.txt");
+    private final Storage storage = new Storage("./data/TsundereChan.txt");
+
+    public TsundereChan() {
+        try {
+            list = storage.load();
+            pointer = list.size();
+        } catch (FileNotFoundException e) {
+            // Do nothing
+        } catch (IllegalArgumentException e) {
+            System.out.println("O-oops! The save data has been corrupted...\n"
+                    + "I guess I owe you one, so let me off this time, okay?");
+        }
+    }
 
     public void run() {
         System.out.println(LINE

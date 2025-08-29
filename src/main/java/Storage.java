@@ -15,7 +15,6 @@ import java.nio.file.Paths;
 
 public class Storage {
     private String filePath;
-    private Scanner sc;
 
     public Storage(String filePath) {
         this.filePath = filePath;
@@ -47,14 +46,53 @@ public class Storage {
             } else {
                 str.append(" | 0 | ");
             }
-            str.append(task.description).append(" | ").append(task.getTiming());
+            str.append(task.description).append(task.getTiming());
             strings.add(str.toString());
         }
         return strings;
     }
-    /*
-    public ArrayList<Task> load() {
-        return
+
+    public ArrayList<Task> load() throws FileNotFoundException {
+        File file = new File(filePath);
+        ArrayList<Task> tasks = new ArrayList<>();
+        Scanner sc = new Scanner(file);
+        while (sc.hasNext()) {
+            String input = sc.nextLine();
+            stringToTasks(input, tasks);
+        }
+        return tasks;
     }
-    */
+
+
+    public void stringToTasks(String input, ArrayList<Task> tasks) {
+        String[] parts = input.split("\\|");
+        for (int i = 0; i < parts.length; i++) {
+            parts[i] = parts[i].trim();
+        }
+        switch (parts[0]) {
+        case "T":
+            if (parts[1].equals("0")) {
+                tasks.add(new Todo(parts[2], false));
+            } else {
+                tasks.add(new Todo(parts[2], true));
+            }
+            break;
+        case "D":
+            if (parts[1].equals("0")) {
+                tasks.add(new Deadline(parts[2], parts[3], false));
+            } else {
+                tasks.add(new Deadline(parts[2], parts[3], true));
+            }
+            break;
+        case "E":
+            if (parts[1].equals("0")) {
+                tasks.add(new Event(parts[2], parts[3], parts[4], false));
+            } else {
+                tasks.add(new Event(parts[2], parts[3], parts[4], true));
+            }
+            break;
+        default:
+            throw new IllegalArgumentException();
+        }
+    }
 }
