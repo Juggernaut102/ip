@@ -9,6 +9,15 @@ public class Event extends Task {
     }
 
     @Override
+    public String getIcon() {
+        return "E";
+    }
+
+    public String getTiming() {
+        return from + "-" + to;
+    }
+
+    @Override
     public String toString() {
         return "[E]" + super.toString() + " (from: " + from + " to: " + to + ")";
     }

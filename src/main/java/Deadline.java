@@ -7,6 +7,15 @@ public class Deadline extends Task {
     }
 
     @Override
+    public String getIcon() {
+        return "D";
+    }
+
+    public String getTiming() {
+        return by;
+    }
+
+    @Override
     public String toString() {
         return "[D]" + super.toString() + " (by: " + by + ")";
     }

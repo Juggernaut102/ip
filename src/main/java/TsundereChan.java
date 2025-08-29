@@ -5,6 +5,7 @@ public class TsundereChan {
     protected static final String LINE = "***************************************";
     private final ArrayList<Task> list = new ArrayList<>();
     private int pointer = 0;
+    private Storage storage = new Storage("./data/TsundereChan.txt");
 
     public void run() {
         System.out.println(LINE
@@ -47,6 +48,7 @@ public class TsundereChan {
                 }
                 index = sc.nextInt();
                 this.mark(index);
+                storage.save(list);
                 break;
             case "unmark":
                 if (!sc.hasNextInt()) {
@@ -54,6 +56,7 @@ public class TsundereChan {
                 }
                 index = sc.nextInt();
                 this.unmark(index);
+                storage.save(list);
                 break;
             case "delete":
                 if (!sc.hasNextInt()) {
@@ -61,9 +64,11 @@ public class TsundereChan {
                 }
                 index = sc.nextInt();
                 this.delete(index);
+                storage.save(list);
                 break;
             default:
                 this.addTask(string);
+                storage.save(list);
         }
         sc.close();
     }
