@@ -29,7 +29,8 @@ public class TsundereChan {
                 if (command.equals("bye")) {
                     break;
                 }
-                this.action(command);
+                Command c = this.action(command);
+                c.execute(tasks, ui, storage);
             } catch (InsufficientInformationException e) {
                 System.out.println(e);
             } catch (IllegalArgumentException e) {
@@ -40,45 +41,42 @@ public class TsundereChan {
         ui.showGoodbye();
     }
 
-    public void action(String string) {
+    public Command action(String string) {
         Scanner sc = new Scanner(string);
         String command = sc.next();
         int index;
         switch (command) {
             case "list":
-                ui.printList(tasks, tasks.getSize());
-                break;
+                sc.close();
+                return new ListCommand();
             case "bye":
-                break;
+                sc.close();
+                return new ExitCommand();
             case "mark":
                 if (!sc.hasNextInt()) {
                     ui.showMarkError();
                 }
                 index = sc.nextInt();
-                tasks.mark(index);
-                storage.save(tasks);
-                break;
+                sc.close();
+                return new MarkCommand(index);
             case "unmark":
                 if (!sc.hasNextInt()) {
                     ui.showUnmarkError();
                 }
                 index = sc.nextInt();
-                tasks.unmark(index);
-                storage.save(tasks);
-                break;
+                sc.close();
+                return new UnmarkCommand(index);
             case "delete":
                 if (!sc.hasNextInt()) {
                     ui.showDeleteError();
                 }
                 index = sc.nextInt();
-                tasks.delete(index);
-                storage.save(tasks);
-                break;
+                sc.close();
+                return new DeleteCommand(index);
             default:
-                tasks.addTask(string);
-                storage.save(tasks);
+                sc.close();
+                return new AddCommand(string);
         }
-        sc.close();
     }
 
     public static void main(String[] args) {
