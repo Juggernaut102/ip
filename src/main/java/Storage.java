@@ -20,7 +20,7 @@ public class Storage {
         this.filePath = filePath;
     }
 
-    public void save(ArrayList<Task> tasks) {
+    public void save(TaskList tasks) {
         File file = new File(filePath);
         try {
             // Check if parent folder exists
@@ -37,9 +37,10 @@ public class Storage {
         }
     }
 
-    public List<String> tasksToString(ArrayList<Task> tasks) {
+    public List<String> tasksToString(TaskList tasks) {
         List<String> strings = new ArrayList<>();
-        for (Task task : tasks) {
+        for (int i = 0; i < tasks.getSize(); i++) {
+            Task task = tasks.getTask(i);
             StringBuilder str = new StringBuilder(task.getIcon());
             if (task.isDone) {
                 str.append(" | 1 | ");

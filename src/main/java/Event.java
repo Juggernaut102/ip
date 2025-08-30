@@ -22,9 +22,7 @@ public class Event extends Task {
             this.to = dateTimeTo.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
         } catch (DateTimeParseException e) {
             // Warn user that format is wrong, but otherwise does nothing
-            System.out.println("Hey, I'll only say this once so listen up! "
-                    + "If you want the from and to sections to be understood as a date and time, "
-                    + "you got to write it as yyyy-MM-dd HH:mm, got it?");
+            // Ui.showDateTimeFormatError("from and to");
         }
     }
 
@@ -40,9 +38,7 @@ public class Event extends Task {
             this.to = dateTimeTo.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
         } catch (DateTimeParseException e) {
             // Warn user that format is wrong, but otherwise does nothing
-            System.out.println("Hey, I'll only say this once so listen up! "
-                    + "If you want the from and to sections to be understood as a date and time, "
-                    + "you got to write it as yyyy-MM-dd HH:mm, got it?");
+            // Ui.showDateTimeFormatError("from and to");
         }
     }
 

@@ -5,6 +5,6 @@ public class InsufficientInformationException extends IllegalArgumentException {
 
     @Override
     public String toString() {
-        return TsundereChan.LINE + "\n" + getMessage() + "\n" + TsundereChan.LINE;
+        return Ui.LINE + "\n" + getMessage() + "\n" + Ui.LINE;
     }
 }

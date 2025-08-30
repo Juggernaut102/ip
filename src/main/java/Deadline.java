@@ -17,9 +17,7 @@ public class Deadline extends Task {
             this.by = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
         } catch (DateTimeParseException e) {
             // Warn user that format is wrong, but otherwise does nothing
-            System.out.println("Hey, I'll only say this once so listen up! "
-                    + "If you want the by section to be understood as a date and time, "
-                    + "you got to write it as yyyy-MM-dd HH:mm, got it?");
+            // Ui.showDateTimeFormatError("by");
         }
     }
 
@@ -32,9 +30,7 @@ public class Deadline extends Task {
             this.by = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
         } catch (DateTimeParseException e) {
             // Warn user that format is wrong, but otherwise does nothing
-            System.out.println("Hey, I'll only say this once so listen up! "
-                    + "If you want the by section to be understood as a date and time, "
-                    + "you got to write it as yyyy-MM-dd HH:mm, got it?");
+            // Ui.showDateTimeFormatError("by");
         }
     }
 
