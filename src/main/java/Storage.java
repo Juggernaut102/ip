@@ -33,7 +33,7 @@ public class Storage {
                 }
             }
         } catch (IOException e) {
-            System.out.println("IO Exception!");
+            System.out.println("Ehehe... There's an IO Exception... Teehee!");
         }
     }
 
