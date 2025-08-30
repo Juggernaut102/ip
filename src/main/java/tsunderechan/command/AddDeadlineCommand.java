@@ -1,3 +1,9 @@
+package tsunderechan.command;
+
+import tsunderechan.storage.Storage;
+import tsunderechan.task.TaskList;
+import tsunderechan.ui.Ui;
+
 public class AddDeadlineCommand extends AddCommand {
     private String by;
 

@@ -1,3 +1,5 @@
+package tsunderechan.task;
+
 public abstract class Task {
     protected String description;
     protected boolean isDone;
@@ -27,6 +29,14 @@ public abstract class Task {
     public abstract String getIcon();
 
     public abstract String getTiming();
+
+    public String getDescription() {
+        return this.description;
+    }
+
+    public boolean isDone() {
+        return isDone;
+    }
 
     @Override
     public String toString() {

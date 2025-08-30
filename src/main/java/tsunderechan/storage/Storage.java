@@ -1,3 +1,11 @@
+package tsunderechan.storage;
+
+import tsunderechan.task.Deadline;
+import tsunderechan.task.Event;
+import tsunderechan.task.Task;
+import tsunderechan.task.TaskList;
+import tsunderechan.task.Todo;
+
 // Read a file
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -8,10 +16,6 @@ import java.util.Scanner;
 // Write to a file
 import java.io.FileWriter;
 import java.io.IOException;
-
-// Copy a file or delete a file
-import java.nio.file.Files;
-import java.nio.file.Paths;
 
 public class Storage {
     private String filePath;
@@ -42,12 +46,12 @@ public class Storage {
         for (int i = 0; i < tasks.getSize(); i++) {
             Task task = tasks.getTask(i);
             StringBuilder str = new StringBuilder(task.getIcon());
-            if (task.isDone) {
+            if (task.isDone()) {
                 str.append(" | 1 | ");
             } else {
                 str.append(" | 0 | ");
             }
-            str.append(task.description).append(task.getTiming());
+            str.append(task.getDescription()).append(task.getTiming());
             strings.add(str.toString());
         }
         return strings;

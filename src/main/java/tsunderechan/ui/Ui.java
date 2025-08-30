@@ -1,8 +1,14 @@
+package tsunderechan.ui;
+
+import tsunderechan.exception.InsufficientInformationException;
+import tsunderechan.task.Task;
+import tsunderechan.task.TaskList;
+
 import java.nio.channels.IllegalChannelGroupException;
 import java.util.Scanner;
 
 public class Ui {
-    protected static final String LINE = "***************************************";
+    public static final String LINE = "***************************************";
     private final Scanner sc = new Scanner(System.in);
 
     public void showWelcome() {
