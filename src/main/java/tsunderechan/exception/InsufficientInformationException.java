@@ -1,5 +1,9 @@
+package tsunderechan.exception;
+
+import tsunderechan.ui.Ui;
+
 public class InsufficientInformationException extends IllegalArgumentException {
-    InsufficientInformationException(String message) {
+    public InsufficientInformationException(String message) {
         super(message);
     }
 

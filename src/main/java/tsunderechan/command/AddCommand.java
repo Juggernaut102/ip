@@ -1,3 +1,5 @@
+package tsunderechan.command;
+
 public abstract class AddCommand extends Command {
     protected String description;
 

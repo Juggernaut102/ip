@@ -1,5 +1,8 @@
+package tsunderechan.task;
+
+import tsunderechan.ui.Ui;
+
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TaskList {
     private ArrayList<Task> tasks;
