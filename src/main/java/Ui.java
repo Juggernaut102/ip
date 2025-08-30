@@ -100,13 +100,13 @@ public class Ui {
         throw new IllegalArgumentException(LINE + "\nWhat?? There's nothing to list, you idiot!\n" + LINE);
     }
 
-    public void printList(ArrayList<Task> list, int index) {
+    public void printList(TaskList tasks, int index) {
         if (index == 0) {
             this.showNoTaskToListError();
         }
         this.showLine();
         for (int i = 0; i < index; i++) {
-            String output = String.format("%d.%s", i+1, list.get(i));
+            String output = String.format("%d.%s", i+1, tasks.getTask(i));
             System.out.println(output);
         }
         this.showLine();

@@ -3,20 +3,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TsundereChan {
-    private ArrayList<Task> list = new ArrayList<>();
-    private int pointer = 0;
+    private TaskList tasks;
     private final Storage storage = new Storage("./data/TsundereChan.txt");
     private Ui ui;
 
     public TsundereChan() {
         ui = new Ui();
         try {
-            list = storage.load();
-            pointer = list.size();
+            tasks = new TaskList(storage.load());
         } catch (FileNotFoundException e) {
-            // Do nothing
+            tasks = new TaskList();
         } catch (IllegalArgumentException e) {
             ui.showLoadingError();
+            tasks = new TaskList();
         }
     }
 
@@ -47,7 +46,7 @@ public class TsundereChan {
         int index;
         switch (command) {
             case "list":
-                ui.printList(list, pointer);
+                ui.printList(tasks, tasks.getSize());
                 break;
             case "bye":
                 break;
@@ -56,109 +55,30 @@ public class TsundereChan {
                     ui.showMarkError();
                 }
                 index = sc.nextInt();
-                this.mark(index);
-                storage.save(list);
+                tasks.mark(index);
+                storage.save(tasks);
                 break;
             case "unmark":
                 if (!sc.hasNextInt()) {
                     ui.showUnmarkError();
                 }
                 index = sc.nextInt();
-                this.unmark(index);
-                storage.save(list);
+                tasks.unmark(index);
+                storage.save(tasks);
                 break;
             case "delete":
                 if (!sc.hasNextInt()) {
                     ui.showDeleteError();
                 }
                 index = sc.nextInt();
-                this.delete(index);
-                storage.save(list);
+                tasks.delete(index);
+                storage.save(tasks);
                 break;
             default:
-                this.addTask(string);
-                storage.save(list);
+                tasks.addTask(string);
+                storage.save(tasks);
         }
         sc.close();
-    }
-
-    public void addTask(String command) {
-        Scanner sc = new Scanner(command);
-        String task = sc.next();
-        String str;
-        switch (task) {
-            case "todo":
-                if (!sc.hasNextLine()) {
-                    ui.showInsufficientInformationError(task);
-                }
-                str = sc.nextLine().trim();
-                list.add(new Todo(str));
-                break;
-            case "deadline":
-                if (!sc.hasNextLine()) {
-                    ui.showInsufficientInformationError(task);
-                }
-                str = sc.nextLine().trim();
-                String[] deadline = str.split("/by", 2);
-                if (deadline.length < 2) {
-                    ui.showDeadlineInvalidFormatError();
-                }
-                Task t = new Deadline(deadline[0].trim(), deadline[1].trim());
-                list.add(t);
-                break;
-            case "event":
-                if (!sc.hasNextLine()) {
-                    ui.showInsufficientInformationError(task);
-                }
-                str = sc.nextLine().trim();
-                String[] event = str.split("/from|/to", 3);
-                if (event.length < 3) {
-                    ui.showEventInvalidFormatError();
-                }
-                Task t2 = new Event(event[0].trim(), event[1].trim(), event[2].trim());
-                list.add(t2);
-                break;
-            default:
-               ui.showNoKeywordError();
-        }
-        sc.close();
-        pointer++;
-        ui.showAddTask(list.get(pointer-1), pointer);
-    }
-
-    public void mark(int index) {
-        if (index < 1 ||  index > pointer) {
-            ui.showInvalidTaskError();
-        }
-        Task task = list.get(index-1);
-        if (task.isDone) {
-            ui.showAlreadyMarkedError();
-            return;
-        }
-        task.mark();
-        ui.showMarkTask(task);
-    }
-
-    public void unmark(int index) {
-        if (index < 1 ||  index > pointer) {
-            ui.showInvalidTaskError();
-        }
-        Task task = list.get(index-1);
-        if (!task.isDone) {
-            ui.showAlreadyUnmarkedError();
-            return;
-        }
-        task.unmark();
-        ui.showUnmarkTask(task);
-    }
-
-    public void delete(int index) {
-        if (index < 1 ||  index > pointer) {
-            ui.showInvalidTaskError();
-        }
-        Task task = list.remove(index-1);
-        pointer--;
-        ui.showDeleteTask(task, pointer);
     }
 
     public static void main(String[] args) {
