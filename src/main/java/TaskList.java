@@ -25,47 +25,21 @@ public class TaskList {
     public Task getTask(int index) {
         return tasks.get(index);
     }
+    
+    public void addTodoTask(String description) {
+        tasks.add(new Todo(description));
+        pointer++;
+        ui.showAddTask(tasks.get(pointer-1), pointer);
+    }
 
-    public void addTask(String command) {
-        Scanner sc = new Scanner(command);
-        String task = sc.next();
-        String str;
-        switch (task) {
-        case "todo":
-            if (!sc.hasNextLine()) {
-                ui.showInsufficientInformationError(task);
-            }
-            str = sc.nextLine().trim();
-            tasks.add(new Todo(str));
-            break;
-        case "deadline":
-            if (!sc.hasNextLine()) {
-                ui.showInsufficientInformationError(task);
-            }
-            str = sc.nextLine().trim();
-            String[] deadline = str.split("/by", 2);
-            if (deadline.length < 2) {
-                ui.showDeadlineInvalidFormatError();
-            }
-            Task t = new Deadline(deadline[0].trim(), deadline[1].trim());
-            tasks.add(t);
-            break;
-        case "event":
-            if (!sc.hasNextLine()) {
-                ui.showInsufficientInformationError(task);
-            }
-            str = sc.nextLine().trim();
-            String[] event = str.split("/from|/to", 3);
-            if (event.length < 3) {
-                ui.showEventInvalidFormatError();
-            }
-            Task t2 = new Event(event[0].trim(), event[1].trim(), event[2].trim());
-            tasks.add(t2);
-            break;
-        default:
-            ui.showNoKeywordError();
-        }
-        sc.close();
+    public void addDeadlineTask(String description, String by) {
+        tasks.add(new Deadline(description, by));
+        pointer++;
+        ui.showAddTask(tasks.get(pointer-1), pointer);
+    }
+
+    public void addEventTask(String description, String from, String to) {
+        tasks.add(new Event(description, from, to));
         pointer++;
         ui.showAddTask(tasks.get(pointer-1), pointer);
     }
