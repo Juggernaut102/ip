@@ -1,9 +1,9 @@
 import java.nio.channels.IllegalChannelGroupException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Ui {
     protected static final String LINE = "***************************************";
+    private final Scanner sc = new Scanner(System.in);
 
     public void showWelcome() {
         System.out.println(LINE
@@ -114,11 +114,10 @@ public class Ui {
     }
 
     public String readCommand() {
-        Scanner sc = new Scanner(System.in);
-        String command = sc.nextLine();
-        sc.close();
-        return command;
+        return sc.nextLine();
     }
 
-
+    public void closeScanner() {
+        sc.close();
+    }
 }

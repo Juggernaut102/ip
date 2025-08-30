@@ -1,14 +1,13 @@
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public class TsundereChan {
     private TaskList tasks;
-    private final Storage storage = new Storage("./data/TsundereChan.txt");
+    private final Storage storage;
     private Ui ui;
 
-    public TsundereChan() {
+    public TsundereChan(String filePath) {
         ui = new Ui();
+        storage = new Storage(filePath);
         try {
             tasks = new TaskList(storage.load());
         } catch (FileNotFoundException e) {
@@ -21,14 +20,13 @@ public class TsundereChan {
 
     public void run() {
         ui.showWelcome();
-        while (true) {
+        boolean isExit = false;
+        while (!isExit) {
             try {
                 String command = ui.readCommand();
-                if (command.equals("bye")) {
-                    break;
-                }
-                Command c = this.action(command);
+                Command c = Parser.parse(command, ui);
                 c.execute(tasks, ui, storage);
+                isExit = c.isExit();
             } catch (InsufficientInformationException e) {
                 System.out.println(e);
             } catch (IllegalArgumentException e) {
@@ -38,46 +36,8 @@ public class TsundereChan {
         ui.showGoodbye();
     }
 
-    public Command action(String string) {
-        Scanner sc = new Scanner(string);
-        String command = sc.next();
-        int index;
-        switch (command) {
-            case "list":
-                sc.close();
-                return new ListCommand();
-            case "bye":
-                sc.close();
-                return new ExitCommand();
-            case "mark":
-                if (!sc.hasNextInt()) {
-                    ui.showMarkError();
-                }
-                index = sc.nextInt();
-                sc.close();
-                return new MarkCommand(index);
-            case "unmark":
-                if (!sc.hasNextInt()) {
-                    ui.showUnmarkError();
-                }
-                index = sc.nextInt();
-                sc.close();
-                return new UnmarkCommand(index);
-            case "delete":
-                if (!sc.hasNextInt()) {
-                    ui.showDeleteError();
-                }
-                index = sc.nextInt();
-                sc.close();
-                return new DeleteCommand(index);
-            default:
-                sc.close();
-                return new AddCommand(string);
-        }
-    }
-
     public static void main(String[] args) {
-        TsundereChan tsundereChan = new TsundereChan();
+        TsundereChan tsundereChan = new TsundereChan("data/TsundereChan.txt");
         tsundereChan.run();
     }
 }
