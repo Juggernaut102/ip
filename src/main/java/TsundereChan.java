@@ -21,11 +21,9 @@ public class TsundereChan {
 
     public void run() {
         ui.showWelcome();
-        Scanner sc = new Scanner(System.in);
-        String command;
         while (true) {
             try {
-                command = sc.nextLine();
+                String command = ui.readCommand();
                 if (command.equals("bye")) {
                     break;
                 }
@@ -37,7 +35,6 @@ public class TsundereChan {
                 System.out.println(e.getMessage());
             }
         }
-        sc.close();
         ui.showGoodbye();
     }
 
