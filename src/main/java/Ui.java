@@ -90,6 +90,12 @@ public class Ui {
                 "or I have no idea what you're talking about, doofus!");
     }
 
+    public static void showDateTimeFormatError(String context) {
+        System.out.println(LINE + "\nHey, I'll only say this once so listen up!\n"
+                + "If you want the " + context + " section to be understood as a date and time, "
+                + "you got to write it as yyyy-MM-dd HH:mm, got it?");
+    }
+
     public void showAddTask(Task task, int index) {
         System.out.println(LINE + "\nW-well, I guess I can help you just this once. B-but don't expect this everytime, got it?!");
         System.out.println("    " + task);
