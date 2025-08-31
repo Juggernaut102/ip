@@ -1,11 +1,10 @@
 package tsunderechan.task;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
-
 import static tsunderechan.ui.Ui.LINE;
+
+import org.junit.jupiter.api.Test;
 
 public class TaskListTest {
     @Test
