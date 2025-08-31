@@ -4,12 +4,22 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+/**
+ * Represents an Event task. It has a description, and a timing from x to y.
+ */
 public class Event extends Task {
     protected String from;
     protected String to;
     protected LocalDateTime dateTimeFrom;
     protected LocalDateTime dateTimeTo;
 
+    /**
+     * Instantiates an Event object.
+     *
+     * @param description Description of the Event Task.
+     * @param from The time the Event Task will start.
+     * @param to The time the Event Task will last until.
+     */
     public Event(String description, String from, String to) {
         super(description);
         this.from = from;
@@ -26,6 +36,15 @@ public class Event extends Task {
         }
     }
 
+    /**
+     * Instantiates an Event object.
+     * This overloaded method allows for manually setting the isDone field.
+     *
+     * @param description Description of the Event Task.
+     * @param from The time the Event Task will start.
+     * @param to The time the Event Task will last until.
+     * @param isDone Whether the task has already been completed.
+     */
     public Event(String description, String from, String to, boolean isDone) {
         super(description, isDone);
         this.from = from;
@@ -47,6 +66,7 @@ public class Event extends Task {
         return "E";
     }
 
+    @Override
     public String getTiming() {
         return " | " + from + " | " + to;
     }

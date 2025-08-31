@@ -4,11 +4,16 @@ import tsunderechan.storage.Storage;
 import tsunderechan.task.TaskList;
 import tsunderechan.ui.Ui;
 
+/**
+ * Represents a command that shows user command is invalid when executed.
+ */
 public class InvalidCommand extends Command {
+    @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         ui.showNoKeywordError();
     }
 
+    @Override
     public boolean isExit() {
         return false;
     }
