@@ -39,7 +39,7 @@ checkstyle {
 }
 
 shadowJar {
-    archiveBaseName = "duke"
+    archiveBaseName = "tsunderechan"
     archiveClassifier = null
 }
 
