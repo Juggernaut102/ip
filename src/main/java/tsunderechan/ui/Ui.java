@@ -1,11 +1,10 @@
 package tsunderechan.ui;
 
+import java.util.Scanner;
+
 import tsunderechan.exception.InsufficientInformationException;
 import tsunderechan.task.Task;
 import tsunderechan.task.TaskList;
-
-import java.nio.channels.IllegalChannelGroupException;
-import java.util.Scanner;
 
 public class Ui {
     public static final String LINE = "***************************************";
@@ -18,8 +17,8 @@ public class Ui {
     }
 
     public void showGoodbye() {
-        System.out.println(LINE + "\nHmph, done already? D-don't talk to me anymore, you idiot!\n" +
-                "It's not l-like I enjoyed talking to you or anything...\n"
+        System.out.println(LINE + "\nHmph, done already? D-don't talk to me anymore, you idiot!\n"
+                + "It's not l-like I enjoyed talking to you or anything...\n"
                 + LINE);
     }
 
@@ -42,7 +41,8 @@ public class Ui {
 
     public void showMarkTask(Task task) {
         System.out.println(LINE);
-        System.out.println("W-well, it seems even you can get something done, I guess... N-not like I'm impressed or anything!");
+        System.out.println("W-well, it seems even you can get something done, I guess... "
+                + "N-not like I'm impressed or anything!");
         System.out.println("    " + task);
         System.out.println(LINE);
     }
@@ -77,8 +77,8 @@ public class Ui {
     public void showDeleteTask(Task task, int index) {
         System.out.println(LINE + "\nHmph, fine. I'll remove this task, so you better be thankful.");
         System.out.println("    " + task);
-        System.out.println("Now you only have " + index + " tasks in your list. " +
-                "U-um, it's not like I care or anything but, you can probably take a little break now, right?");
+        System.out.println("Now you only have " + index + " tasks in your list. "
+                + "U-um, it's not like I care or anything but, you can probably take a little break now, right?");
         System.out.println(LINE);
     }
 
@@ -107,7 +107,8 @@ public class Ui {
     }
 
     public void showAddTask(Task task, int index) {
-        System.out.println(LINE + "\nW-well, I guess I can help you just this once. B-but don't expect this everytime, got it?!");
+        System.out.println(LINE + "\nW-well, I guess I can help you just this once. "
+                + "B-but don't expect this everytime, got it?!");
         System.out.println("    " + task);
         System.out.println("Now you have " + index + " tasks in your list. Better get to work!");
         System.out.println(LINE);
@@ -123,7 +124,7 @@ public class Ui {
         }
         this.showLine();
         for (int i = 0; i < index; i++) {
-            String output = String.format("%d.%s", i+1, tasks.getTask(i));
+            String output = String.format("%d.%s", i + 1, tasks.getTask(i));
             System.out.println(output);
         }
         this.showLine();

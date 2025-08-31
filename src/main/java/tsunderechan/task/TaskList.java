@@ -1,8 +1,8 @@
 package tsunderechan.task;
 
-import tsunderechan.ui.Ui;
-
 import java.util.ArrayList;
+
+import tsunderechan.ui.Ui;
 
 public class TaskList {
     protected ArrayList<Task> tasks;
@@ -31,30 +31,30 @@ public class TaskList {
         }
         return tasks.get(index);
     }
-    
+
     public void addTodoTask(String description) {
         tasks.add(new Todo(description));
         pointer++;
-        ui.showAddTask(tasks.get(pointer-1), pointer);
+        ui.showAddTask(tasks.get(pointer - 1), pointer);
     }
 
     public void addDeadlineTask(String description, String by) {
         tasks.add(new Deadline(description, by));
         pointer++;
-        ui.showAddTask(tasks.get(pointer-1), pointer);
+        ui.showAddTask(tasks.get(pointer - 1), pointer);
     }
 
     public void addEventTask(String description, String from, String to) {
         tasks.add(new Event(description, from, to));
         pointer++;
-        ui.showAddTask(tasks.get(pointer-1), pointer);
+        ui.showAddTask(tasks.get(pointer - 1), pointer);
     }
 
     public void mark(int index) {
-        if (index < 1 ||  index > pointer) {
+        if (index < 1 || index > pointer) {
             ui.showInvalidTaskError();
         }
-        Task task = tasks.get(index-1);
+        Task task = tasks.get(index - 1);
         if (task.isDone) {
             ui.showAlreadyMarkedError();
             return;
@@ -64,10 +64,10 @@ public class TaskList {
     }
 
     public void unmark(int index) {
-        if (index < 1 ||  index > pointer) {
+        if (index < 1 || index > pointer) {
             ui.showInvalidTaskError();
         }
-        Task task = tasks.get(index-1);
+        Task task = tasks.get(index - 1);
         if (!task.isDone) {
             ui.showAlreadyUnmarkedError();
             return;
@@ -77,10 +77,10 @@ public class TaskList {
     }
 
     public void delete(int index) {
-        if (index < 1 ||  index > pointer) {
+        if (index < 1 || index > pointer) {
             ui.showInvalidTaskError();
         }
-        Task task = tasks.remove(index-1);
+        Task task = tasks.remove(index - 1);
         pointer--;
         ui.showDeleteTask(task, pointer);
     }

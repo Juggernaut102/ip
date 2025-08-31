@@ -1,21 +1,19 @@
 package tsunderechan.storage;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import tsunderechan.task.Deadline;
 import tsunderechan.task.Event;
 import tsunderechan.task.Task;
 import tsunderechan.task.TaskList;
 import tsunderechan.task.Todo;
 
-// Read a file
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
-
-// Write to a file
-import java.io.FileWriter;
-import java.io.IOException;
 
 public class Storage {
     private String filePath;
