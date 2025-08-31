@@ -62,12 +62,16 @@ public class Ui {
         System.out.println(LINE);
     }
 
-    public void showInvalidTaskError() throws IllegalChannelGroupException {
+    public void showInvalidTaskError() throws IllegalArgumentException {
         throw new IllegalArgumentException(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE);
     }
 
     public void showDeleteError() throws IllegalArgumentException {
         throw new IllegalArgumentException(LINE + "\nYou must have a task number after delete!\n" + LINE);
+    }
+
+    public void showInvalidIndexError() throws IllegalArgumentException {
+        throw new IllegalArgumentException(LINE + "\nIndex is out of bounds, dummy!\n" + LINE);
     }
 
     public void showDeleteTask(Task task, int index) {
@@ -92,12 +96,12 @@ public class Ui {
     }
 
     public void showNoKeywordError() throws InsufficientInformationException {
-        throw new InsufficientInformationException("You need to include a keyword, " +
-                "or I have no idea what you're talking about, doofus!");
+        throw new InsufficientInformationException("You need to include a keyword, "
+                + "or I have no idea what you're talking about, doofus!");
     }
 
     public static void showDateTimeFormatError(String context) {
-        System.out.println(LINE + "\nHey, I'll only say this once so listen up!\n"
+        System.out.println(LINE + "\nI'll only say this once so listen up!\n"
                 + "If you want the " + context + " section to be understood as a date and time, "
                 + "you got to write it as yyyy-MM-dd HH:mm, got it?");
     }

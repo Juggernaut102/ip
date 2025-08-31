@@ -5,8 +5,8 @@ import tsunderechan.ui.Ui;
 import java.util.ArrayList;
 
 public class TaskList {
-    private ArrayList<Task> tasks;
-    private int pointer;
+    protected ArrayList<Task> tasks;
+    protected int pointer;
     private Ui ui;
 
     public TaskList() {
@@ -26,6 +26,9 @@ public class TaskList {
     }
 
     public Task getTask(int index) {
+        if (index < 0 || index >= tasks.size()) {
+            ui.showInvalidIndexError();
+        }
         return tasks.get(index);
     }
     
