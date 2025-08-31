@@ -14,8 +14,19 @@ import tsunderechan.command.MarkCommand;
 import tsunderechan.command.UnmarkCommand;
 import tsunderechan.ui.Ui;
 
-
+/**
+ * Represents an object that can read and make sense of user input.
+ */
 public class Parser {
+    /**
+     * Returns a Command parsed from user input.
+     * If the position is unset, NaN is returned.
+     *
+     * @param fullCommand The entire line typed by the user.
+     * @param ui Ui used to read input and print output.
+     * @return Command to be executed.
+     * @throws IllegalArgumentException If input does not follow specified requirements.
+     */
     public static Command parse(String fullCommand, Ui ui) {
         Scanner sc = new Scanner(fullCommand);
         String command = sc.next();

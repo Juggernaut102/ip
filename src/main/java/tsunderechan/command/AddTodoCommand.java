@@ -4,12 +4,21 @@ import tsunderechan.storage.Storage;
 import tsunderechan.task.TaskList;
 import tsunderechan.ui.Ui;
 
+/**
+ * Represents a command to add a todo task when executed.
+ */
 public class AddTodoCommand extends AddCommand {
 
+    /**
+     * Instantiates an AddTodoCommand object.
+     *
+     * @param description Description of the Todo Task.
+     */
     public AddTodoCommand(String description) {
         this.description = description;
     }
 
+    @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) {
         tasks.addTodoTask(description);
     }

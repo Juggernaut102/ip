@@ -9,11 +9,20 @@ import tsunderechan.ui.Ui;
 
 import java.io.FileNotFoundException;
 
+/**
+ * Represents a chatbot application.
+ */
 public class TsundereChan {
     private TaskList tasks;
     private final Storage storage;
     private Ui ui;
 
+    /**
+     * Instantiates a TsundereChan object, loading from the specified filePath.
+     * If no save file found in filePath, start from clean slate.
+     *
+     * @param filePath Path to find the save file to load from.
+     */
     public TsundereChan(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
@@ -27,6 +36,9 @@ public class TsundereChan {
         }
     }
 
+    /**
+     * Runs the application.
+     */
     public void run() {
         ui.showWelcome();
         boolean isExit = false;
