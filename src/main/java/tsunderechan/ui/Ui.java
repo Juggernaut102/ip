@@ -5,6 +5,7 @@ import tsunderechan.task.Task;
 import tsunderechan.task.TaskList;
 
 import java.nio.channels.IllegalChannelGroupException;
+import java.util.List;
 import java.util.Scanner;
 
 public class Ui {
@@ -87,6 +88,10 @@ public class Ui {
                 + " at least, or I can't help you, doofus!");
     }
 
+    public void showNoKeywordDuringFind() throws InsufficientInformationException {
+        throw new InsufficientInformationException("How can i find something without a keyword... Are you dumb?");
+    }
+
     public void showDeadlineInvalidFormatError() throws InsufficientInformationException {
         throw new InsufficientInformationException("You need to include /by, dummy!");
     }
@@ -135,5 +140,19 @@ public class Ui {
 
     public void closeScanner() {
         sc.close();
+    }
+
+    public void showFindResults(List<Task> matches) {
+        System.out.println(LINE + "\nWhy do you giving me so much work...\n"
+                + "grumble grumble... Anyway, here's the list:");
+        for (int i = 0; i < matches.size(); i++) {
+            String output = String.format("%d.%s", i + 1, matches.get(i));
+            System.out.println(output);
+        }
+        this.showLine();
+    }
+
+    public void showNoMatchFound() {
+        System.out.println(LINE + "\nI've looked pretty hard, but couldn't find anything...\n" + LINE);
     }
 }

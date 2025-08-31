@@ -8,6 +8,7 @@ import tsunderechan.command.AddTodoCommand;
 import tsunderechan.command.Command;
 import tsunderechan.command.DeleteCommand;
 import tsunderechan.command.ExitCommand;
+import tsunderechan.command.FindCommand;
 import tsunderechan.command.InvalidCommand;
 import tsunderechan.command.ListCommand;
 import tsunderechan.command.MarkCommand;
@@ -77,6 +78,13 @@ public class Parser {
             }
             sc.close();
             return new AddEventCommand(event[0].trim(), event[1].trim(), event[2].trim());
+        case "find":
+            if (!sc.hasNextLine()) {
+                ui.showNoKeywordDuringFind();
+            }
+            str = sc.nextLine().trim();
+            sc.close();
+            return new FindCommand(str);
         default:
             sc.close();
             return new InvalidCommand();
