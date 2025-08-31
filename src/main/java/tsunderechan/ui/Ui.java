@@ -252,6 +252,11 @@ public class Ui {
         sc.close();
     }
 
+    /**
+     * Prints tasks that have matching keywords in their description.
+     *
+     * @param matches List of Tasks that have matching keywords in their description.
+     */
     public void showFindResults(List<Task> matches) {
         System.out.println(LINE + "\nWhy do you giving me so much work...\n"
                 + "grumble grumble... Anyway, here's the list:");
@@ -262,6 +267,9 @@ public class Ui {
         this.showLine();
     }
 
+    /**
+     * Tells user that there is no task that has matching keyword.
+     */
     public void showNoMatchFound() {
         System.out.println(LINE + "\nI've looked pretty hard, but couldn't find anything...\n" + LINE);
     }

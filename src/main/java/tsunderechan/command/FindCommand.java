@@ -7,9 +7,17 @@ import tsunderechan.task.Task;
 import tsunderechan.task.TaskList;
 import tsunderechan.ui.Ui;
 
+/**
+ * Represents a command that finds tasks containing the keyword.
+ */
 public class FindCommand extends Command {
     private String keyword;
 
+    /**
+     * Instantiates a FindCommand object.
+     *
+     * @param keyword Keyword to match with description of tasks.
+     */
     public FindCommand(String keyword) {
         this.keyword = keyword;
     }

@@ -146,6 +146,11 @@ public class TaskList {
         ui.showDeleteTask(task, pointer);
     }
 
+    /**
+     * Returns tasks whose descriptions match the keyword.
+     *
+     * @param keyword Keyword to match with description of tasks..
+     */
     public List<Task> find(String keyword) {
         List<Task> results = new ArrayList<>();
         for (Task task : tasks) {
