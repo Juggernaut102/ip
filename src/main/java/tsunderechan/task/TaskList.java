@@ -1,6 +1,7 @@
 package tsunderechan.task;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import tsunderechan.ui.Ui;
 
@@ -143,5 +144,15 @@ public class TaskList {
         Task task = tasks.remove(index - 1);
         pointer--;
         ui.showDeleteTask(task, pointer);
+    }
+
+    public List<Task> find(String keyword) {
+        List<Task> results = new ArrayList<>();
+        for (Task task : tasks) {
+            if (task.getDescription().contains(keyword)) {
+                results.add(task);
+            }
+        }
+        return results;
     }
 }

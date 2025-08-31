@@ -1,5 +1,6 @@
 package tsunderechan.ui;
 
+import java.util.List;
 import java.util.Scanner;
 
 import tsunderechan.exception.InsufficientInformationException;
@@ -151,6 +152,15 @@ public class Ui {
     }
 
     /**
+     * Prints a prompt to the user to tell them to add a keyword when finding.
+     *
+     * @throws InsufficientInformationException All the time.
+     */
+    public void showNoKeywordDuringFind() throws InsufficientInformationException {
+        throw new InsufficientInformationException("How can I find something without a keyword... Are you dumb?");
+    }
+
+    /**
      * Prints a prompt to the user to tell them proper input format.
      *
      * @throws InsufficientInformationException All the time.
@@ -240,5 +250,19 @@ public class Ui {
      */
     public void closeScanner() {
         sc.close();
+    }
+
+    public void showFindResults(List<Task> matches) {
+        System.out.println(LINE + "\nWhy do you giving me so much work...\n"
+                + "grumble grumble... Anyway, here's the list:");
+        for (int i = 0; i < matches.size(); i++) {
+            String output = String.format("%d.%s", i + 1, matches.get(i));
+            System.out.println(output);
+        }
+        this.showLine();
+    }
+
+    public void showNoMatchFound() {
+        System.out.println(LINE + "\nI've looked pretty hard, but couldn't find anything...\n" + LINE);
     }
 }
