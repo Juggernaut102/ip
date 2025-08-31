@@ -69,7 +69,7 @@ public class Storage {
     }
 
 
-    public void stringToTasks(String input, ArrayList<Task> tasks) {
+    public void stringToTasks(String input, ArrayList<? super Task> tasks) {
         String[] parts = input.split("\\|");
         for (int i = 0; i < parts.length; i++) {
             parts[i] = parts[i].trim();
