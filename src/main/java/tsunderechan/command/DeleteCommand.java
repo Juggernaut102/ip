@@ -20,9 +20,10 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        tasks.delete(index);
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
+        String s = tasks.delete(index);
         storage.save(tasks);
+        return s;
     }
 
     @Override

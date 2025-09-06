@@ -48,8 +48,6 @@ public class TsundereChan {
                 Command c = Parser.parse(command, ui);
                 c.execute(tasks, ui, storage);
                 isExit = c.isExit();
-            } catch (InsufficientInformationException e) {
-                System.out.println(e);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -57,15 +55,21 @@ public class TsundereChan {
         ui.showGoodbye();
     }
 
+    /*
     public static void main(String[] args) {
         TsundereChan tsundereChan = new TsundereChan("data/TsundereChan.txt");
         tsundereChan.run();
-    }
+    }*/
 
     /**
      * Generates a response for the user's chat message.
      */
     public String getResponse(String input) {
-        return "Duke heard: " + input;
+        try {
+            Command c = Parser.parse(input, ui);
+            return c.execute(tasks, ui, storage);
+        } catch (IllegalArgumentException e) {
+            return e.getMessage();
+        }
     }
 }
