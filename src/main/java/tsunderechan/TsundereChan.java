@@ -16,6 +16,7 @@ public class TsundereChan {
     private TaskList tasks;
     private final Storage storage;
     private Ui ui;
+    private String commandType;
 
     /**
      * Instantiates a TsundereChan object, loading from the specified filePath.
@@ -67,9 +68,17 @@ public class TsundereChan {
     public String getResponse(String input) {
         try {
             Command c = Parser.parse(input, ui);
+            commandType = c.getClass().getSimpleName();
             return c.execute(tasks, ui, storage);
         } catch (IllegalArgumentException e) {
             return e.getMessage();
         }
+    }
+
+    /**
+     * Returns a String with the specified command type
+     */
+    public String getCommandType() {
+        return commandType;
     }
 }

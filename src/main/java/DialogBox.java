@@ -44,15 +44,39 @@ public class DialogBox extends HBox {
         Collections.reverse(tmp);
         getChildren().setAll(tmp);
         setAlignment(Pos.TOP_LEFT);
+        dialog.getStyleClass().add("reply-label");
     }
 
+    /**
+     * Returns a new dialog box containing user image and user input text.
+     */
     public static DialogBox getUserDialog(String text, Image img) {
         return new DialogBox(text, img);
     }
 
-    public static DialogBox getTsundereDialog(String text, Image img) {
+    /**
+     * Returns a new dialog box containing tsundereChan's image and reply text.
+     */
+    public static DialogBox getTsundereDialog(String text, Image img, String commandType) {
         var db = new DialogBox(text, img);
         db.flip();
+        db.changeDialogStyle(commandType);
         return db;
+    }
+
+    private void changeDialogStyle(String commandType) {
+        switch(commandType) {
+        case "AddDeadlineCommand", "AddEventCommand", "AddTodoCommand":
+            dialog.getStyleClass().add("add-label");
+            break;
+        case "MarkCommand":
+            dialog.getStyleClass().add("marked-label");
+            break;
+        case "DeleteCommand", "UnmarkCommand":
+            dialog.getStyleClass().add("delete-label");
+            break;
+        default:
+            // Do nothing
+        }
     }
 }
