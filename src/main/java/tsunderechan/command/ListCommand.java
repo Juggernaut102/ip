@@ -9,8 +9,8 @@ import tsunderechan.ui.Ui;
  */
 public class ListCommand extends Command {
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        ui.printList(tasks, tasks.getSize());
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
+        return ui.printList(tasks, tasks.getSize());
     }
 
     @Override

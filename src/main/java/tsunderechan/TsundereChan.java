@@ -16,6 +16,7 @@ public class TsundereChan {
     private TaskList tasks;
     private final Storage storage;
     private Ui ui;
+    private String commandType;
 
     /**
      * Instantiates a TsundereChan object, loading from the specified filePath.
@@ -48,8 +49,6 @@ public class TsundereChan {
                 Command c = Parser.parse(command, ui);
                 c.execute(tasks, ui, storage);
                 isExit = c.isExit();
-            } catch (InsufficientInformationException e) {
-                System.out.println(e);
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -57,8 +56,29 @@ public class TsundereChan {
         ui.showGoodbye();
     }
 
+    /*
     public static void main(String[] args) {
         TsundereChan tsundereChan = new TsundereChan("data/TsundereChan.txt");
         tsundereChan.run();
+    }*/
+
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        try {
+            Command c = Parser.parse(input, ui);
+            commandType = c.getClass().getSimpleName();
+            return c.execute(tasks, ui, storage);
+        } catch (IllegalArgumentException e) {
+            return e.getMessage();
+        }
+    }
+
+    /**
+     * Returns a String with the specified command type
+     */
+    public String getCommandType() {
+        return commandType;
     }
 }

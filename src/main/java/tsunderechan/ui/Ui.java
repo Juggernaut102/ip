@@ -11,40 +11,29 @@ import tsunderechan.task.TaskList;
  * Represents an object that reads user input and outputs things to the screen.
  */
 public class Ui {
-    public static final String LINE = "***************************************";
     private final Scanner sc = new Scanner(System.in);
 
     /**
      * Prints welcome statement when application begins.
      */
-    public void showWelcome() {
-        System.out.println(LINE
-                + "\nHmph! I'm Tsundere-chan.\nWhat do you want? If you ask nicely, I just MIGHT help you...\n"
-                + LINE);
+    public String showWelcome() {
+        return "Hmph! I'm Tsundere-chan.\nWhat do you want? If you ask nicely, I just MIGHT help you...";
     }
 
     /**
      * Prints goodbye statement when application exits.
      */
-    public void showGoodbye() {
-        System.out.println(LINE + "\nHmph, done already? D-don't talk to me anymore, you idiot!\n"
-                + "It's not l-like I enjoyed talking to you or anything...\n"
-                + LINE);
-    }
-
-    /**
-     * Prints a line separator.
-     */
-    public void showLine() {
-        System.out.println(LINE);
+    public String showGoodbye() {
+        return "Hmph, done already? D-don't talk to me anymore, you idiot!\n"
+                + "It's not l-like I enjoyed talking to you or anything...";
     }
 
     /**
      * Prints a save corrupted message.
      */
-    public void showLoadingError() {
-        System.out.println("O-oops! The save data has been corrupted...\n"
-                + "I guess I owe you one, so let me off this time, okay?");
+    public String showLoadingError() {
+        return "O-oops! The save data has been corrupted...\n"
+                + "I guess I owe you one, so let me off this time, okay?";
     }
 
     /**
@@ -53,14 +42,14 @@ public class Ui {
      * @throws IllegalArgumentException All the time.
      */
     public void showMarkError() throws IllegalArgumentException {
-        throw new IllegalArgumentException(LINE + "\nYou must have a task number after mark!\n" + LINE);
+        throw new IllegalArgumentException("You must have a task number after mark!");
     }
 
     /**
      * Prints a prompt to the user when marking an already marked task.
      */
-    public void showAlreadyMarkedError() {
-        System.out.println(LINE + "\nYou've already asked me to mark it, geez!\n" + LINE);
+    public String showAlreadyMarkedError() {
+        return "You've already asked me to mark it, geez!";
     }
 
     /**
@@ -68,12 +57,10 @@ public class Ui {
      *
      * @param task Task to be printed out.
      */
-    public void showMarkTask(Task task) {
-        System.out.println(LINE);
-        System.out.println("W-well, it seems even you can get something done, I guess... "
-                + "N-not like I'm impressed or anything!");
-        System.out.println("    " + task);
-        System.out.println(LINE);
+    public String showMarkTask(Task task) {
+        return "W-well, it seems even you can get something done, I guess... "
+                + "N-not like I'm impressed or anything!\n"
+                + "    " + task;
     }
 
     /**
@@ -82,14 +69,14 @@ public class Ui {
      * @throws IllegalArgumentException All the time.
      */
     public void showUnmarkError() throws IllegalArgumentException {
-        throw new IllegalArgumentException(LINE + "\nYou must have a task number after unmark!\n" + LINE);
+        throw new IllegalArgumentException("You must have a task number after unmark!");
     }
 
     /**
      * Prints a prompt to the user when unmarking an already unmarked task.
      */
-    public void showAlreadyUnmarkedError() {
-        System.out.println(LINE + "\nIt's not even done yet, geeez!\n" + LINE);
+    public String showAlreadyUnmarkedError() {
+        return "It's not even done yet, geeez!";
     }
 
     /**
@@ -97,18 +84,16 @@ public class Ui {
      *
      * @param task Task to be printed out.
      */
-    public void showUnmarkTask(Task task) {
-        System.out.println(LINE);
-        System.out.println("And here I was, expecting something from you... Why do I feel disappointed?");
-        System.out.println("    " + task);
-        System.out.println(LINE);
+    public String showUnmarkTask(Task task) {
+        return "And here I was, expecting something from you... Why do I feel disappointed?\n"
+                + "    " + task;
     }
 
     /**
      * Throws an IllegalArgumentException when marking a task that is not in the TaskList.
      */
     public void showInvalidTaskError() throws IllegalArgumentException {
-        throw new IllegalArgumentException(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE);
+        throw new IllegalArgumentException("That's not a valid task, you iiiiidiot!");
     }
 
     /**
@@ -117,14 +102,14 @@ public class Ui {
      * @throws IllegalArgumentException All the time.
      */
     public void showDeleteError() throws IllegalArgumentException {
-        throw new IllegalArgumentException(LINE + "\nYou must have a task number after delete!\n" + LINE);
+        throw new IllegalArgumentException("You must have a task number after delete!");
     }
 
     /**
      * Throws an IllegalArgumentException when attempting to get a task out of bounds of the TaskList.
      */
     public void showInvalidIndexError() throws IllegalArgumentException {
-        throw new IllegalArgumentException(LINE + "\nIndex is out of bounds, dummy!\n" + LINE);
+        throw new IllegalArgumentException("Index is out of bounds, dummy!");
     }
 
     /**
@@ -133,12 +118,11 @@ public class Ui {
      * @param task Task to be printed out.
      * @param index Index of Task to be deleted.
      */
-    public void showDeleteTask(Task task, int index) {
-        System.out.println(LINE + "\nHmph, fine. I'll remove this task, so you better be thankful.");
-        System.out.println("    " + task);
-        System.out.println("Now you only have " + index + " tasks in your list. "
-                + "U-um, it's not like I care or anything but, you can probably take a little break now, right?");
-        System.out.println(LINE);
+    public String showDeleteTask(Task task, int index) {
+        return "Hmph, fine. I'll remove this task, so you better be thankful."
+                + "    " + task
+                + "\nNow you only have " + index + " tasks in your list.\n"
+                + "U-um, it's not like I care or anything but, you can probably take a little break now, right?";
     }
 
     /**
@@ -157,7 +141,8 @@ public class Ui {
      * @throws InsufficientInformationException All the time.
      */
     public void showNoKeywordDuringFind() throws InsufficientInformationException {
-        throw new InsufficientInformationException("How can I find something without a keyword... Are you dumb?");
+        throw new InsufficientInformationException("I know I'm great and all, "
+                + "but how can I find something without a keyword... Are you dumb?");
     }
 
     /**
@@ -191,10 +176,10 @@ public class Ui {
     /**
      * Prints a prompt to the user to tell them proper input format for time and dates.
      */
-    public static void showDateTimeFormatError(String context) {
-        System.out.println(LINE + "\nI'll only say this once so listen up!\n"
-                + "If you want the " + context + " section to be understood as a date and time, "
-                + "you got to write it as yyyy-MM-dd HH:mm, got it?");
+    public static String showDateTimeFormatError(String context) {
+        return "I'll only say this once so listen up!\n"
+                + "If you want the " + context + " section to be understood as a date and time,\n"
+                + "you got to write it as yyyy-MM-dd HH:mm, got it?";
     }
 
     /**
@@ -203,12 +188,11 @@ public class Ui {
      * @param task Task to be printed out.
      * @param index Index of task added.
      */
-    public void showAddTask(Task task, int index) {
-        System.out.println(LINE + "\nW-well, I guess I can help you just this once. "
-                + "B-but don't expect this everytime, got it?!");
-        System.out.println("    " + task);
-        System.out.println("Now you have " + index + " tasks in your list. Better get to work!");
-        System.out.println(LINE);
+    public String showAddTask(Task task, int index) {
+        return "W-well, I guess I can help you just this once. "
+                + "B-but don't expect this everytime, got it?!\n"
+                + "    " + task
+                + "\nNow you have " + index + " tasks in your list. Better get to work!";
     }
 
     /**
@@ -217,7 +201,7 @@ public class Ui {
      * @throws IllegalArgumentException All the time.
      */
     public void showNoTaskToListError() throws IllegalArgumentException {
-        throw new IllegalArgumentException(LINE + "\nWhat?? There's nothing to list, you idiot!\n" + LINE);
+        throw new IllegalArgumentException("What?? There's nothing to list, you idiot!");
     }
 
     /**
@@ -226,16 +210,16 @@ public class Ui {
      * @param tasks Tasks to be printed out.
      * @param index Number of tasks in the list.
      */
-    public void printList(TaskList tasks, int index) {
+    public String printList(TaskList tasks, int index) {
+        String result = "";
         if (index == 0) {
             this.showNoTaskToListError();
         }
-        this.showLine();
         for (int i = 0; i < index; i++) {
-            String output = String.format("%d.%s", i + 1, tasks.getTask(i));
-            System.out.println(output);
+            String output = String.format("%d.%s\n", i + 1, tasks.getTask(i));
+            result = result + output;
         }
-        this.showLine();
+        return result;
     }
 
     /**
@@ -257,20 +241,20 @@ public class Ui {
      *
      * @param matches List of Tasks that have matching keywords in their description.
      */
-    public void showFindResults(List<Task> matches) {
-        System.out.println(LINE + "\nWhy do you giving me so much work...\n"
-                + "grumble grumble... Anyway, here's the list:");
+    public String showFindResults(List<Task> matches) {
+        String result = "Why do you giving me so much work...\n"
+                + "grumble grumble... Anyway, here's the list:\n";
         for (int i = 0; i < matches.size(); i++) {
-            String output = String.format("%d.%s", i + 1, matches.get(i));
-            System.out.println(output);
+            String output = String.format("%d.%s\n", i + 1, matches.get(i));
+            result = result + output;
         }
-        this.showLine();
+        return result;
     }
 
     /**
      * Tells user that there is no task that has matching keyword.
      */
-    public void showNoMatchFound() {
-        System.out.println(LINE + "\nI've looked pretty hard, but couldn't find anything...\n" + LINE);
+    public String showNoMatchFound() {
+        return "I've looked pretty hard, but couldn't find anything... It-it's not my fault, ok?";
     }
 }

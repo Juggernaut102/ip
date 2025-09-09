@@ -9,8 +9,9 @@ import tsunderechan.ui.Ui;
  */
 public class InvalidCommand extends Command {
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         ui.showNoKeywordError();
+        return "";
     }
 
     @Override

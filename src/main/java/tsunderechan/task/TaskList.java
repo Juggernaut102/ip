@@ -59,10 +59,10 @@ public class TaskList {
      *
      * @param description Description of Todo task to be added.
      */
-    public void addTodoTask(String description) {
+    public String addTodoTask(String description) {
         tasks.add(new Todo(description));
         pointer++;
-        ui.showAddTask(tasks.get(pointer - 1), pointer);
+        return ui.showAddTask(tasks.get(pointer - 1), pointer);
     }
 
     /**
@@ -71,10 +71,10 @@ public class TaskList {
      * @param description Description of deadline task to be added.
      * @param by The time the Deadline Task should be completed by.
      */
-    public void addDeadlineTask(String description, String by) {
+    public String addDeadlineTask(String description, String by) {
         tasks.add(new Deadline(description, by));
         pointer++;
-        ui.showAddTask(tasks.get(pointer - 1), pointer);
+        return ui.showAddTask(tasks.get(pointer - 1), pointer);
     }
 
     /**
@@ -84,10 +84,10 @@ public class TaskList {
      * @param from The time the Event Task will start.
      * @param to The time the Event Task will last until.
      */
-    public void addEventTask(String description, String from, String to) {
+    public String addEventTask(String description, String from, String to) {
         tasks.add(new Event(description, from, to));
         pointer++;
-        ui.showAddTask(tasks.get(pointer - 1), pointer);
+        return ui.showAddTask(tasks.get(pointer - 1), pointer);
     }
 
     /**
@@ -97,17 +97,16 @@ public class TaskList {
      *
      * @throws IllegalArgumentException If index is negative or larger than current size of list.
      */
-    public void mark(int index) {
+    public String mark(int index) {
         if (index < 1 || index > pointer) {
             ui.showInvalidTaskError();
         }
         Task task = tasks.get(index - 1);
         if (task.isDone) {
-            ui.showAlreadyMarkedError();
-            return;
+            return ui.showAlreadyMarkedError();
         }
         task.mark();
-        ui.showMarkTask(task);
+        return ui.showMarkTask(task);
     }
 
     /**
@@ -117,17 +116,16 @@ public class TaskList {
      *
      * @throws IllegalArgumentException If index is negative or larger than current size of list.
      */
-    public void unmark(int index) {
+    public String unmark(int index) {
         if (index < 1 || index > pointer) {
             ui.showInvalidTaskError();
         }
         Task task = tasks.get(index - 1);
         if (!task.isDone) {
-            ui.showAlreadyUnmarkedError();
-            return;
+            return ui.showAlreadyUnmarkedError();
         }
         task.unmark();
-        ui.showUnmarkTask(task);
+        return ui.showUnmarkTask(task);
     }
 
     /**
@@ -137,13 +135,14 @@ public class TaskList {
      *
      * @throws IllegalArgumentException If index is negative or larger than current size of list.
      */
-    public void delete(int index) {
+    public String delete(int index) {
         if (index < 1 || index > pointer) {
             ui.showInvalidTaskError();
+            return "";
         }
         Task task = tasks.remove(index - 1);
         pointer--;
-        ui.showDeleteTask(task, pointer);
+        return ui.showDeleteTask(task, pointer);
     }
 
     /**

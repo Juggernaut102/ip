@@ -22,7 +22,7 @@ public class AddDeadlineCommand extends AddCommand {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
-        tasks.addDeadlineTask(description, by);
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
+        return tasks.addDeadlineTask(description, by);
     }
 }
