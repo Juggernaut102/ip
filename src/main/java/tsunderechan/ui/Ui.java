@@ -16,7 +16,7 @@ public class Ui {
     /**
      * Prints welcome statement when application begins.
      */
-    public String showWelcome() {
+    public static String showWelcome() {
         return "Hmph! I'm Tsundere-chan.\nWhat do you want? If you ask nicely, I just MIGHT help you...";
     }
 

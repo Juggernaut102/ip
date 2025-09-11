@@ -1,3 +1,5 @@
+package gui;
+
 import java.io.IOException;
 import java.util.Collections;
 
@@ -56,6 +58,16 @@ public class DialogBox extends HBox {
 
     /**
      * Returns a new dialog box containing tsundereChan's image and reply text.
+     */
+    public static DialogBox getTsundereDialog(String text, Image img) {
+        var db = new DialogBox(text, img);
+        db.flip();
+        return db;
+    }
+
+    /**
+     * Returns a new dialog box containing tsundereChan's image and reply text,
+     * with a different dialog style depending on commandType.
      */
     public static DialogBox getTsundereDialog(String text, Image img, String commandType) {
         var db = new DialogBox(text, img);

@@ -1,3 +1,5 @@
+package gui;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
@@ -28,6 +30,7 @@ public class MainWindow extends AnchorPane {
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
+        dialogContainer.getChildren().add(DialogBox.getTsundereDialog(TsundereChan.showWelcome(), tsundereImage));
     }
 
     /** Injects the TsundereChan instance */
@@ -49,5 +52,17 @@ public class MainWindow extends AnchorPane {
                 DialogBox.getTsundereDialog(response, tsundereImage, commandType)
         );
         userInput.clear();
+
+        if ("ExitCommand".equals(commandType)) {
+            this.onExitCommand();
+        }
+    }
+
+    // Delays exit of app so the goodbye message is visible
+    private void onExitCommand() {
+        javafx.animation.PauseTransition delay =
+                new javafx.animation.PauseTransition(javafx.util.Duration.seconds(2));
+        delay.setOnFinished(event -> javafx.application.Platform.exit());
+        delay.play();
     }
 }

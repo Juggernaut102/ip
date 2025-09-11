@@ -56,12 +56,6 @@ public class TsundereChan {
         ui.showGoodbye();
     }
 
-    /*
-    public static void main(String[] args) {
-        TsundereChan tsundereChan = new TsundereChan("data/TsundereChan.txt");
-        tsundereChan.run();
-    }*/
-
     /**
      * Generates a response for the user's chat message.
      */
@@ -80,5 +74,12 @@ public class TsundereChan {
      */
     public String getCommandType() {
         return commandType;
+    }
+
+    /**
+     * Returns a String showing the welcome message
+     */
+    public static String showWelcome() {
+        return Ui.showWelcome();
     }
 }
