@@ -13,9 +13,4 @@ public class InvalidCommand extends Command {
         ui.showNoKeywordError();
         return "";
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

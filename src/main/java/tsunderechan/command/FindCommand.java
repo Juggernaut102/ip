@@ -30,9 +30,4 @@ public class FindCommand extends Command {
         }
         return ui.showFindResults(matches);
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }
