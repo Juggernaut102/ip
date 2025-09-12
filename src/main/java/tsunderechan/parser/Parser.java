@@ -8,6 +8,7 @@ import tsunderechan.command.AddTodoCommand;
 import tsunderechan.command.Command;
 import tsunderechan.command.DeleteCommand;
 import tsunderechan.command.ExitCommand;
+import tsunderechan.command.EmptyCommand;
 import tsunderechan.command.FindCommand;
 import tsunderechan.command.InvalidCommand;
 import tsunderechan.command.ListCommand;
@@ -30,6 +31,9 @@ public class Parser {
      */
     public static Command parse(String fullCommand, Ui ui) {
         Scanner sc = new Scanner(fullCommand);
+        if (!sc.hasNext()) {
+            return new EmptyCommand();
+        }
         String command = sc.next();
         int index;
         switch (command) {

@@ -169,8 +169,18 @@ public class Ui {
      * @throws InsufficientInformationException All the time.
      */
     public void showNoKeywordError() throws InsufficientInformationException {
-        throw new InsufficientInformationException("You need to include a keyword, "
-                + "or I have no idea what you're talking about, doofus!");
+        throw new InsufficientInformationException("You need to include a keyword! "
+                + "I can't read your mind, doofus!");
+    }
+
+    /**
+     * Prints a prompt to the user to type something.
+     *
+     * @throws InsufficientInformationException All the time.
+     */
+    public void showNoInputError() throws InsufficientInformationException {
+        throw new InsufficientInformationException("W-what? Why are you just staring at me? "
+                + "I-is there something on my face?");
     }
 
     /**
