@@ -4,6 +4,8 @@ import tsunderechan.storage.Storage;
 import tsunderechan.task.TaskList;
 import tsunderechan.ui.Ui;
 
+import java.io.IOException;
+
 /**
  * Represents a command to mark a task when executed.
  */
@@ -20,7 +22,7 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
         String s = tasks.mark(index);
         storage.save(tasks);
         return s;

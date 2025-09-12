@@ -4,6 +4,8 @@ import tsunderechan.storage.Storage;
 import tsunderechan.task.TaskList;
 import tsunderechan.ui.Ui;
 
+import java.io.IOException;
+
 /**
  * Represents a command to add an event task when executed.
  */
@@ -25,7 +27,7 @@ public class AddEventCommand extends AddCommand {
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
         String s = tasks.addEventTask(description, from, to);
         storage.save(tasks);
         return s;

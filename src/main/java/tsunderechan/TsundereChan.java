@@ -1,6 +1,7 @@
 package tsunderechan;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import tsunderechan.command.Command;
 import tsunderechan.exception.InsufficientInformationException;
@@ -45,7 +46,7 @@ public class TsundereChan {
             Command c = Parser.parse(input, ui);
             commandType = c.getClass().getSimpleName();
             return c.execute(tasks, ui, storage);
-        } catch (IllegalArgumentException e) {
+        } catch (IllegalArgumentException | IOException e) {
             return e.getMessage();
         }
     }

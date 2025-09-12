@@ -4,6 +4,8 @@ import tsunderechan.storage.Storage;
 import tsunderechan.task.TaskList;
 import tsunderechan.ui.Ui;
 
+import java.io.IOException;
+
 /**
  * Represents a command to add a deadline task when executed.
  */
@@ -22,7 +24,7 @@ public class AddDeadlineCommand extends AddCommand {
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
         String s = tasks.addDeadlineTask(description, by);
         storage.save(tasks);
         return s;

@@ -4,6 +4,8 @@ import tsunderechan.storage.Storage;
 import tsunderechan.task.TaskList;
 import tsunderechan.ui.Ui;
 
+import java.io.IOException;
+
 /**
  * Represents a command to add a todo task when executed.
  */
@@ -19,7 +21,7 @@ public class AddTodoCommand extends AddCommand {
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
         String s = tasks.addTodoTask(description);
         storage.save(tasks);
         return s;
