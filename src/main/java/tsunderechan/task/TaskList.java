@@ -10,7 +10,6 @@ import tsunderechan.ui.Ui;
  */
 public class TaskList {
     protected ArrayList<Task> tasks;
-    protected int pointer;
     private Ui ui;
 
     /**
@@ -19,7 +18,6 @@ public class TaskList {
     public TaskList() {
         tasks = new ArrayList<>();
         ui = new Ui();
-        pointer = 0;
     }
 
     /**
@@ -30,7 +28,6 @@ public class TaskList {
     public TaskList(ArrayList<Task> tasks) {
         this.tasks = tasks;
         ui = new Ui();
-        pointer = tasks.size();
     }
 
     /**
@@ -61,8 +58,8 @@ public class TaskList {
      */
     public String addTodoTask(String description) {
         tasks.add(new Todo(description));
-        pointer++;
-        return ui.showAddTask(tasks.get(pointer - 1), pointer);
+        int size = tasks.size();
+        return ui.showAddTask(tasks.get(size - 1), size);
     }
 
     /**
@@ -73,8 +70,8 @@ public class TaskList {
      */
     public String addDeadlineTask(String description, String by) {
         tasks.add(new Deadline(description, by));
-        pointer++;
-        return ui.showAddTask(tasks.get(pointer - 1), pointer);
+        int size = tasks.size();
+        return ui.showAddTask(tasks.get(size - 1), size);
     }
 
     /**
@@ -86,8 +83,8 @@ public class TaskList {
      */
     public String addEventTask(String description, String from, String to) {
         tasks.add(new Event(description, from, to));
-        pointer++;
-        return ui.showAddTask(tasks.get(pointer - 1), pointer);
+        int size = tasks.size();
+        return ui.showAddTask(tasks.get(size - 1), size);
     }
 
     /**
@@ -98,7 +95,7 @@ public class TaskList {
      * @throws IllegalArgumentException If index is negative or larger than current size of list.
      */
     public String mark(int index) {
-        if (index < 1 || index > pointer) {
+        if (index < 1 || index > tasks.size()) {
             ui.showInvalidTaskError();
         }
         Task task = tasks.get(index - 1);
@@ -117,7 +114,7 @@ public class TaskList {
      * @throws IllegalArgumentException If index is negative or larger than current size of list.
      */
     public String unmark(int index) {
-        if (index < 1 || index > pointer) {
+        if (index < 1 || index > tasks.size()) {
             ui.showInvalidTaskError();
         }
         Task task = tasks.get(index - 1);
@@ -136,13 +133,12 @@ public class TaskList {
      * @throws IllegalArgumentException If index is negative or larger than current size of list.
      */
     public String delete(int index) {
-        if (index < 1 || index > pointer) {
+        if (index < 1 || index > tasks.size()) {
             ui.showInvalidTaskError();
             return "";
         }
         Task task = tasks.remove(index - 1);
-        pointer--;
-        return ui.showDeleteTask(task, pointer);
+        return ui.showDeleteTask(task, tasks.size());
     }
 
     /**

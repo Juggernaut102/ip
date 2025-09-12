@@ -35,7 +35,7 @@ public class Storage {
      *
      * @param tasks The list of tasks to be saved.
      */
-    public void save(TaskList tasks) {
+    public void save(TaskList tasks) throws IOException {
         File file = new File(filePath);
         try {
             // Check if parent folder exists
@@ -43,12 +43,13 @@ public class Storage {
 
             try (FileWriter fw = new FileWriter(filePath)) {
                 List<String> strings = tasksToString(tasks);
+                assert strings != null : "strings must not be null";
                 for (String str : strings) {
                     fw.write(str + "\n");
                 }
             }
         } catch (IOException e) {
-            System.out.println("Ehehe... There's an IO Exception... Teehee!");
+            throw new IOException("Oopsie! I couldn't save your data... Teehee!", e);
         }
     }
 
@@ -62,6 +63,7 @@ public class Storage {
         List<String> strings = new ArrayList<>();
         for (int i = 0; i < tasks.getSize(); i++) {
             Task task = tasks.getTask(i);
+            assert task != null : "task should not be null";
             StringBuilder str = new StringBuilder(task.getIcon());
             if (task.isDone()) {
                 str.append(" | 1 | ");

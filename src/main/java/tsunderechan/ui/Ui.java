@@ -11,7 +11,6 @@ import tsunderechan.task.TaskList;
  * Represents an object that reads user input and outputs things to the screen.
  */
 public class Ui {
-    private final Scanner sc = new Scanner(System.in);
 
     /**
      * Prints welcome statement when application begins.
@@ -169,8 +168,18 @@ public class Ui {
      * @throws InsufficientInformationException All the time.
      */
     public void showNoKeywordError() throws InsufficientInformationException {
-        throw new InsufficientInformationException("You need to include a keyword, "
-                + "or I have no idea what you're talking about, doofus!");
+        throw new InsufficientInformationException("You need to include a keyword! "
+                + "I can't read your mind, doofus!");
+    }
+
+    /**
+     * Prints a prompt to the user to type something.
+     *
+     * @throws InsufficientInformationException All the time.
+     */
+    public void showNoInputError() throws InsufficientInformationException {
+        throw new InsufficientInformationException("W-what? Why are you just staring at me? "
+                + "I-is there something on my face?");
     }
 
     /**
@@ -223,26 +232,12 @@ public class Ui {
     }
 
     /**
-     * Returns a string that user has inputted.
-     */
-    public String readCommand() {
-        return sc.nextLine();
-    }
-
-    /**
-     * Closes scanner.
-     */
-    public void closeScanner() {
-        sc.close();
-    }
-
-    /**
      * Prints tasks that have matching keywords in their description.
      *
      * @param matches List of Tasks that have matching keywords in their description.
      */
     public String showFindResults(List<Task> matches) {
-        String result = "Why do you giving me so much work...\n"
+        String result = "Why do you keep giving me so much work...\n"
                 + "grumble grumble... Anyway, here's the list:\n";
         for (int i = 0; i < matches.size(); i++) {
             String output = String.format("%d.%s\n", i + 1, matches.get(i));

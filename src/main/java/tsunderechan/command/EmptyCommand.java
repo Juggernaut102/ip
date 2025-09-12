@@ -5,11 +5,12 @@ import tsunderechan.task.TaskList;
 import tsunderechan.ui.Ui;
 
 /**
- * Represents a command to list all tasks when executed.
+ * Instantiates an EmptyCommand object for when user returns empty string.
  */
-public class ListCommand extends Command {
+public class EmptyCommand extends Command {
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) {
-        return ui.printList(tasks, tasks.getSize());
+        ui.showNoInputError();
+        return "";
     }
 }

@@ -58,7 +58,9 @@ public class MainWindow extends AnchorPane {
         }
     }
 
-    // Delays exit of app so the goodbye message is visible
+    /**
+     * Delays exit of app so the goodbye message is visible
+     */
     private void onExitCommand() {
         javafx.animation.PauseTransition delay =
                 new javafx.animation.PauseTransition(javafx.util.Duration.seconds(2));
