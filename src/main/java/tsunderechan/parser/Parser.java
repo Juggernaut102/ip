@@ -30,6 +30,7 @@ public class Parser {
      * @throws IllegalArgumentException If input does not follow specified requirements.
      */
     public static Command parse(String fullCommand, Ui ui) {
+        assert fullCommand != null : "fullCommand should not be null";
         Scanner sc = new Scanner(fullCommand);
         if (!sc.hasNext()) {
             return new EmptyCommand();

@@ -26,6 +26,8 @@ public class AddEventCommand extends AddCommand {
 
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) {
-        return tasks.addEventTask(description, from, to);
+        String s = tasks.addEventTask(description, from, to);
+        storage.save(tasks);
+        return s;
     }
 }

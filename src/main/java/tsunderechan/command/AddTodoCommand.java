@@ -20,6 +20,8 @@ public class AddTodoCommand extends AddCommand {
 
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) {
-        return tasks.addTodoTask(description);
+        String s = tasks.addTodoTask(description);
+        storage.save(tasks);
+        return s;
     }
 }

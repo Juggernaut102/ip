@@ -43,6 +43,7 @@ public class Storage {
 
             try (FileWriter fw = new FileWriter(filePath)) {
                 List<String> strings = tasksToString(tasks);
+                assert strings != null : "strings must not be null";
                 for (String str : strings) {
                     fw.write(str + "\n");
                 }
