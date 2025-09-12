@@ -2,6 +2,7 @@ package tsunderechan.task;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import tsunderechan.ui.Ui;
 
@@ -57,6 +58,7 @@ public class TaskList {
      * @param description Description of Todo task to be added.
      */
     public String addTodoTask(String description) {
+        detectDuplicateTask("T", description);
         tasks.add(new Todo(description));
         int size = tasks.size();
         return ui.showAddTask(tasks.get(size - 1), size);
@@ -69,6 +71,7 @@ public class TaskList {
      * @param by The time the Deadline Task should be completed by.
      */
     public String addDeadlineTask(String description, String by) {
+        detectDuplicateTask("D", description, by);
         tasks.add(new Deadline(description, by));
         int size = tasks.size();
         return ui.showAddTask(tasks.get(size - 1), size);
@@ -82,6 +85,7 @@ public class TaskList {
      * @param to The time the Event Task will last until.
      */
     public String addEventTask(String description, String from, String to) {
+        detectDuplicateTask("E", description, from, to);
         tasks.add(new Event(description, from, to));
         int size = tasks.size();
         return ui.showAddTask(tasks.get(size - 1), size);
@@ -154,5 +158,60 @@ public class TaskList {
             }
         }
         return results;
+    }
+
+    /**
+     * Detects duplicate task when adding a new task.
+     * A duplicate task means all descriptors are the same.
+     *
+     * @param typeOfNewTask the icon of the new task to be added
+     * @param descriptors Depends on the task.
+     *                    For todo, just description.
+     *                    For deadline, description then by.
+     *                    For event, description then from then to.
+     *
+     * @throws IllegalArgumentException if duplicate found.
+     */
+    private void detectDuplicateTask(String typeOfNewTask, String ... descriptors) {
+        for (Task task : tasks) {
+            String description = task.getDescription();
+            String type = task.getIcon();
+
+            boolean isSameDescription = description.equals(descriptors[0]);
+            boolean isSameType = type.equals(typeOfNewTask);
+
+            if (isSameType && isSameDescription) {
+                switch (type) {
+                case "T":
+                    detectTodoDuplicates(task);
+                    break;
+                case "D":
+                    detectDeadlineDuplicates((Deadline) task, descriptors[1]);
+                    break;
+                case "E":
+                    detectEventDuplicates((Event) task, descriptors[1], descriptors[2]);
+                    break;
+                }
+            }
+        }
+    }
+
+    private void detectTodoDuplicates(Task task) {
+        ui.showDuplicateTaskError(task.toString(), tasks.indexOf(task) + 1);
+    }
+
+    private void detectDeadlineDuplicates(Deadline task, String by) {
+        boolean isSameBy = task.by.equals(by);
+        if (isSameBy) {
+            ui.showDuplicateTaskError(task.toString(), tasks.indexOf(task) + 1);
+        }
+    }
+
+    private void detectEventDuplicates(Event task, String from, String to) {
+        boolean isSameFrom = task.from.equals(from);
+        boolean isSameTo = task.to.equals(to);
+        if (isSameFrom && isSameTo) {
+            ui.showDuplicateTaskError(task.toString(), tasks.indexOf(task) + 1);
+        }
     }
 }

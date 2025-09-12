@@ -252,4 +252,13 @@ public class Ui {
     public String showNoMatchFound() {
         return "I've looked pretty hard, but couldn't find anything... It-it's not my fault, ok?";
     }
+
+    /**
+     * Tells user that there is a duplicate task found.
+     */
+    public void showDuplicateTaskError(String taskString, int index) throws IllegalArgumentException {
+        String s = String.format("Hey! I've already added an identical task to the list! Look!\n"
+                + "%d. %s\nThere's no need to add a duplicate and make my life harder, is there?", index, taskString);
+        throw new IllegalArgumentException(s);
+    }
 }
