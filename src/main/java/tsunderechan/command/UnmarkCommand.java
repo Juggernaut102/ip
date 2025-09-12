@@ -25,9 +25,4 @@ public class UnmarkCommand extends Command {
         storage.save(tasks);
         return s;
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

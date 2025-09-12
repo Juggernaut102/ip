@@ -5,9 +5,4 @@ package tsunderechan.command;
  */
 public abstract class AddCommand extends Command {
     protected String description;
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }

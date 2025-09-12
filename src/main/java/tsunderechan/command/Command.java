@@ -16,12 +16,4 @@ public abstract class Command {
      * @param storage Storage to save changes made to file.
      */
     public abstract String execute(TaskList tasks, Ui ui, Storage storage);
-
-
-    /**
-     * Returns whether this command will cause application to exit.
-     *
-     * @return Boolean.
-     */
-    public abstract boolean isExit();
 }

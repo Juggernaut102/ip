@@ -38,25 +38,6 @@ public class TsundereChan {
     }
 
     /**
-     * Runs the application.
-     */
-    public void run() {
-        ui.showWelcome();
-        boolean isExit = false;
-        while (!isExit) {
-            try {
-                String command = ui.readCommand();
-                Command c = Parser.parse(command, ui);
-                c.execute(tasks, ui, storage);
-                isExit = c.isExit();
-            } catch (IllegalArgumentException e) {
-                System.out.println(e.getMessage());
-            }
-        }
-        ui.showGoodbye();
-    }
-
-    /**
      * Generates a response for the user's chat message.
      */
     public String getResponse(String input) {

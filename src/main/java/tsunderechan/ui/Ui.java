@@ -233,13 +233,6 @@ public class Ui {
     }
 
     /**
-     * Returns a string that user has inputted.
-     */
-    public String readCommand() {
-        return sc.nextLine();
-    }
-
-    /**
      * Closes scanner.
      */
     public void closeScanner() {
@@ -252,7 +245,7 @@ public class Ui {
      * @param matches List of Tasks that have matching keywords in their description.
      */
     public String showFindResults(List<Task> matches) {
-        String result = "Why do you giving me so much work...\n"
+        String result = "Why do you keep giving me so much work...\n"
                 + "grumble grumble... Anyway, here's the list:\n";
         for (int i = 0; i < matches.size(); i++) {
             String output = String.format("%d.%s\n", i + 1, matches.get(i));

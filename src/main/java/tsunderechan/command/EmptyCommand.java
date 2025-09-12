@@ -13,9 +13,4 @@ public class EmptyCommand extends Command {
         ui.showNoInputError();
         return "";
     }
-
-    @Override
-    public boolean isExit() {
-        return true;
-    }
 }

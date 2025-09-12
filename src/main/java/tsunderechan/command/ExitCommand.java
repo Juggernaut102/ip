@@ -13,9 +13,4 @@ public class ExitCommand extends Command {
         ui.closeScanner();
         return ui.showGoodbye();
     }
-
-    @Override
-    public boolean isExit() {
-        return true;
-    }
 }

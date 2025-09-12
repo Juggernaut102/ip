@@ -12,9 +12,4 @@ public class ListCommand extends Command {
     public String execute(TaskList tasks, Ui ui, Storage storage) {
         return ui.printList(tasks, tasks.getSize());
     }
-
-    @Override
-    public boolean isExit() {
-        return false;
-    }
 }
