@@ -24,6 +24,7 @@ public class UnmarkCommand extends Command {
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
         String s = tasks.unmark(index);
+        assert s != null : "string for unmarking task should not be null";
         storage.save(tasks);
         return s;
     }

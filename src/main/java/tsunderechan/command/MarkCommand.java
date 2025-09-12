@@ -24,6 +24,7 @@ public class MarkCommand extends Command {
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
         String s = tasks.mark(index);
+        assert s != null : "string for marking task should not be null";
         storage.save(tasks);
         return s;
     }

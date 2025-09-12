@@ -24,6 +24,7 @@ public class DeleteCommand extends Command {
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
         String s = tasks.delete(index);
+        assert s != null : "string for deleting task should not be null";
         storage.save(tasks);
         return s;
     }

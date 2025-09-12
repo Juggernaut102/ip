@@ -26,6 +26,7 @@ public class AddDeadlineCommand extends AddCommand {
     @Override
     public String execute(TaskList tasks, Ui ui, Storage storage) throws IOException {
         String s = tasks.addDeadlineTask(description, by);
+        assert s != null : "string for adding deadline task should not be null";
         storage.save(tasks);
         return s;
     }
