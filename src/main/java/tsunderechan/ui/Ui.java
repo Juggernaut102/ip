@@ -11,7 +11,6 @@ import tsunderechan.task.TaskList;
  * Represents an object that reads user input and outputs things to the screen.
  */
 public class Ui {
-    private final Scanner sc = new Scanner(System.in);
 
     /**
      * Prints welcome statement when application begins.
@@ -230,13 +229,6 @@ public class Ui {
             result = result + output;
         }
         return result;
-    }
-
-    /**
-     * Closes scanner.
-     */
-    public void closeScanner() {
-        sc.close();
     }
 
     /**
