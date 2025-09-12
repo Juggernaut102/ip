@@ -31,15 +31,12 @@ public class Parser {
      */
     public static Command parse(String fullCommand, Ui ui) {
         assert fullCommand != null : "fullCommand should not be null";
-        Scanner sc = new Scanner(fullCommand.trim());
-
+        Scanner sc = new Scanner(fullCommand);
         if (!sc.hasNext()) {
-            sc.close();
             return new EmptyCommand();
         }
-
         String command = sc.next();
-
+        int index;
         switch (command) {
         case "list":
             sc.close();
@@ -48,93 +45,65 @@ public class Parser {
             sc.close();
             return new ExitCommand();
         case "mark":
-            return createMarkCommand(ui, sc);
+            if (!sc.hasNextInt()) {
+                ui.showMarkError();
+            }
+            index = sc.nextInt();
+            sc.close();
+            return new MarkCommand(index);
         case "unmark":
-            return createUnmarkCommand(ui, sc);
+            if (!sc.hasNextInt()) {
+                ui.showUnmarkError();
+            }
+            index = sc.nextInt();
+            sc.close();
+            return new UnmarkCommand(index);
         case "delete":
-            return createDeleteCommand(ui, sc);
+            if (!sc.hasNextInt()) {
+                ui.showDeleteError();
+            }
+            index = sc.nextInt();
+            sc.close();
+            return new DeleteCommand(index);
         case "todo":
-            return createTodoCommand(ui, sc, command);
+            if (!sc.hasNextLine()) {
+                ui.showInsufficientInformationError(command);
+            }
+            String str = sc.nextLine().trim();
+            sc.close();
+            return new AddTodoCommand(str);
         case "deadline":
-            return createDeadlineCommand(ui, sc, command);
+            if (!sc.hasNextLine()) {
+                ui.showInsufficientInformationError(command);
+            }
+            str = sc.nextLine().trim();
+            String[] deadline = str.split("/by", 2);
+            if (deadline.length < 2) {
+                ui.showDeadlineInvalidFormatError();
+            }
+            sc.close();
+            return new AddDeadlineCommand(deadline[0].trim(), deadline[1].trim());
         case "event":
-            return createEventCommand(ui, sc, command);
+            if (!sc.hasNextLine()) {
+                ui.showInsufficientInformationError(command);
+            }
+            str = sc.nextLine().trim();
+            String[] event = str.split("/from|/to", 3);
+            if (event.length < 3) {
+                ui.showEventInvalidFormatError();
+            }
+            sc.close();
+            return new AddEventCommand(event[0].trim(), event[1].trim(), event[2].trim());
         case "find":
-            return createFindCommand(ui, sc);
+            if (!sc.hasNextLine()) {
+                ui.showNoKeywordDuringFind();
+            }
+            str = sc.nextLine().trim();
+            sc.close();
+            return new FindCommand(str);
         default:
             sc.close();
             return new InvalidCommand();
         }
-    }
-
-    private static MarkCommand createMarkCommand(Ui ui, Scanner sc) {
-        if (!sc.hasNextInt()) {
-            ui.showMarkError();
-        }
-        int index = sc.nextInt();
-        sc.close();
-        return new MarkCommand(index);
-    }
-
-    private static Command createUnmarkCommand(Ui ui, Scanner sc) {
-        if (!sc.hasNextInt()) {
-            ui.showUnmarkError();
-        }
-        int index = sc.nextInt();
-        sc.close();
-        return new UnmarkCommand(index);
-    }
-
-    private static Command createDeleteCommand(Ui ui, Scanner sc) {
-        if (!sc.hasNextInt()) {
-            ui.showDeleteError();
-        }
-        int index = sc.nextInt();
-        sc.close();
-        return new DeleteCommand(index);
-    }
-    
-    private static Command createTodoCommand(Ui ui, Scanner sc, String command) {
-        if (!sc.hasNextLine()) {
-            ui.showInsufficientInformationError(command);
-        }
-        String str = sc.nextLine().trim();
-        sc.close();
-        return new AddTodoCommand(str);
-    }
-
-    private static Command createDeadlineCommand(Ui ui, Scanner sc, String command) {
-        if (!sc.hasNextLine()) {
-            ui.showInsufficientInformationError(command);
-        }
-        String str = sc.nextLine().trim();
-        String[] deadline = str.split("/by", 2);
-        if (deadline.length < 2) {
-            ui.showDeadlineInvalidFormatError();
-        }
-        sc.close();
-        return new AddDeadlineCommand(deadline[0].trim(), deadline[1].trim());
-    }
-
-    private static Command createEventCommand(Ui ui, Scanner sc, String command) {
-        if (!sc.hasNextLine()) {
-            ui.showInsufficientInformationError(command);
-        }
-        String str = sc.nextLine().trim();
-        String[] event = str.split("/from|/to", 3);
-        if (event.length < 3) {
-            ui.showEventInvalidFormatError();
-        }
-        sc.close();
-        return new AddEventCommand(event[0].trim(), event[1].trim(), event[2].trim());
-    }
-    
-    private static Command createFindCommand(Ui ui, Scanner sc) {
-        if (!sc.hasNextLine()) {
-            ui.showNoKeywordDuringFind();
-        }
-        String str = sc.nextLine().trim();
-        sc.close();
-        return new FindCommand(str);
     }
 }

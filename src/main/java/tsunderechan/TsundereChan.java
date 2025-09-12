@@ -28,7 +28,6 @@ public class TsundereChan {
     public TsundereChan(String filePath) {
         ui = new Ui();
         storage = new Storage(filePath);
-        commandType = "";
         try {
             tasks = new TaskList(storage.load());
         } catch (FileNotFoundException e) {
