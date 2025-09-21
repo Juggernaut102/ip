@@ -118,7 +118,7 @@ public class Ui {
      * @param index Index of Task to be deleted.
      */
     public String showDeleteTask(Task task, int index) {
-        return "Hmph, fine. I'll remove this task, so you better be thankful."
+        return "Hmph, fine. I'll remove this task, so you better be thankful.\n"
                 + "    " + task
                 + "\nNow you only have " + index + " tasks in your list.\n"
                 + "U-um, it's not like I care or anything but, you can probably take a little break now, right?";

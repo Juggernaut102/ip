@@ -48,6 +48,7 @@ public class TsundereChan {
             commandType = c.getClass().getSimpleName();
             return c.execute(tasks, ui, storage);
         } catch (IllegalArgumentException | IOException e) {
+            commandType = "InvalidCommand";
             return e.getMessage();
         }
     }
