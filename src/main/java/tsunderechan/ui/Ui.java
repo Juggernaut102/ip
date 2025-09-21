@@ -28,6 +28,39 @@ public class Ui {
     }
 
     /**
+     * Returns a String when user types in "El Psy Congroo".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showElPsyCongroo() {
+        return "How the heck did you come up with that? W-well, I guess it's kind of cool...";
+    }
+
+    /**
+     * Returns a String when user types in "The world is ending".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showWorldIsEnding() {
+        return "*rolls eyes\nDid you go to May Queen again? Enough nonsense, let's get to work.";
+    }
+
+    /**
+     * Returns a String when user types in "Steins Gate".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showSteinsGate() {
+        return "A-are we there yet?";
+    }
+
+    /**
+     * Returns a String when user types in "i am mad scientist".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showMadScientist() {
+        return "Yes, yes, I am aware. "
+                + "Now if you don't mind, could you let the actual scientist here focus, please?";
+    }
+
+    /**
      * Prints a corrupted save data message.
      */
     public static void showLoadingError() throws IllegalArgumentException {
