@@ -2,7 +2,6 @@ package tsunderechan.task;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.fail;
-import static tsunderechan.ui.Ui.LINE;
 
 import org.junit.jupiter.api.Test;
 
@@ -15,7 +14,7 @@ public class TaskListTest {
             assertEquals(new TaskListStub(), actual);
             fail(); // the test should not reach this line
         } catch (IllegalArgumentException e) {
-            assertEquals(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE, e.getMessage());
+            assertEquals("That's not a valid task, you iiiiidiot!", e.getMessage());
         }
     }
 
@@ -28,7 +27,7 @@ public class TaskListTest {
             assertEquals(new TaskListStub(), actual);
             fail(); // the test should not reach this line
         } catch (IllegalArgumentException e) {
-            assertEquals(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE, e.getMessage());
+            assertEquals("That's not a valid task, you iiiiidiot!", e.getMessage());
         }
     }
 
@@ -41,7 +40,7 @@ public class TaskListTest {
             assertEquals(new TaskListStub(), actual);
             fail(); // the test should not reach this line
         } catch (IllegalArgumentException e) {
-            assertEquals(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE, e.getMessage());
+            assertEquals("That's not a valid task, you iiiiidiot!", e.getMessage());
         }
     }
 
@@ -58,7 +57,7 @@ public class TaskListTest {
         TaskListStub actual = new TaskListStub();
         TaskList actual2 = actual.getDeadlineTask();
         actual2.mark(1);
-        assertEquals("[D][X] homework (by: tomorrow)", actual2.getTask(0).toString());
+        assertEquals("[D][X] homework (by: Mar 29 2025 11:22 pm)", actual2.getTask(0).toString());
     }
 
     @Test
@@ -66,7 +65,7 @@ public class TaskListTest {
         TaskListStub actual = new TaskListStub();
         TaskList actual2 = actual.getEventTask();
         actual2.mark(1);
-        assertEquals("[E][X] CCA (from: 5pm to: 9pm)", actual2.getTask(0).toString());
+        assertEquals("[E][X] CCA (from: Mar 29 2025 11:22 pm to: Mar 30 2025 12:22 am)", actual2.getTask(0).toString());
     }
 
     @Test
@@ -76,8 +75,8 @@ public class TaskListTest {
         actual2.mark(1);
         actual2.mark(2);
         actual2.mark(3);
-        assertEquals("[E][X] CCA (from: 5pm to: 9pm)", actual2.getTask(0).toString());
-        assertEquals("[D][X] homework (by: tomorrow)", actual2.getTask(1).toString());
+        assertEquals("[E][X] CCA (from: Mar 29 2025 11:22 pm to: Mar 30 2025 12:22 am)", actual2.getTask(0).toString());
+        assertEquals("[D][X] homework (by: Mar 29 2025 11:22 pm)", actual2.getTask(1).toString());
         assertEquals("[T][X] homework", actual2.getTask(2).toString());
     }
 
@@ -89,7 +88,7 @@ public class TaskListTest {
             assertEquals(new TaskListStub(), actual);
             fail(); // the test should not reach this line
         } catch (IllegalArgumentException e) {
-            assertEquals(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE, e.getMessage());
+            assertEquals("That's not a valid task, you iiiiidiot!", e.getMessage());
         }
     }
 
@@ -102,7 +101,7 @@ public class TaskListTest {
             assertEquals(new TaskListStub(), actual);
             fail(); // the test should not reach this line
         } catch (IllegalArgumentException e) {
-            assertEquals(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE, e.getMessage());
+            assertEquals("That's not a valid task, you iiiiidiot!", e.getMessage());
         }
     }
 
@@ -115,7 +114,7 @@ public class TaskListTest {
             assertEquals(new TaskListStub(), actual);
             fail(); // the test should not reach this line
         } catch (IllegalArgumentException e) {
-            assertEquals(LINE + "\nThat's not a valid task, you iiiiidiot!\n" + LINE, e.getMessage());
+            assertEquals("That's not a valid task, you iiiiidiot!", e.getMessage());
         }
     }
 
