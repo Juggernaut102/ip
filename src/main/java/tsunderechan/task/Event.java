@@ -28,6 +28,11 @@ public class Event extends Task {
             this.from = dateTimeFrom.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
             LocalDateTime dateTimeTo = LocalDateTime.parse(to, inputFormatter);
             this.to = dateTimeTo.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
+
+            // If end time is earlier than start time, throw exception
+            if (dateTimeTo.isBefore(dateTimeFrom)) {
+                Ui.showDateTimeInvalidError();
+            }
         } catch (DateTimeParseException e) {
             Ui.showDateTimeFormatError("from and to");
         }
@@ -50,6 +55,11 @@ public class Event extends Task {
             this.from = dateTimeFrom.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
             LocalDateTime dateTimeTo = LocalDateTime.parse(to, inputFormatter);
             this.to = dateTimeTo.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
+
+            // If end time is earlier than start time, throw exception
+            if (dateTimeTo.isBefore(dateTimeFrom)) {
+                Ui.showDateTimeInvalidError();
+            }
         } catch (DateTimeParseException e) {
             Ui.showDateTimeFormatError("from and to");
         }

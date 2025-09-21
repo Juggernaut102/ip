@@ -163,7 +163,7 @@ public class Ui {
     }
 
     /**
-     * Prints a prompt to the user to tell them proper input format.
+     * Prints a prompt to the user to tell them to include a keyword.
      *
      * @throws InsufficientInformationException All the time.
      */
@@ -189,6 +189,15 @@ public class Ui {
         throw new IllegalArgumentException("You have to write the " + context
                 + " section as a valid yyyy-MM-dd HH:mm,"
                 + " otherwise I can't understand it as a date and time, got it?");
+    }
+
+    /**
+     * Prints a prompt to user telling them that date and time entered is invalid.
+     * Used when user inputs an event with end date earlier than start time.
+     */
+    public static void showDateTimeInvalidError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("The from time must obviously be after the to time, you idiot! "
+                + "Do you need to go back to grade school? Or...is time travel involved...?");
     }
 
     /**
