@@ -28,11 +28,11 @@ public class Ui {
     }
 
     /**
-     * Prints a save corrupted message.
+     * Prints a corrupted save data message.
      */
-    public String showLoadingError() {
-        return "O-oops! The save data has been corrupted...\n"
-                + "I guess I owe you one, so let me off this time, okay?";
+    public static void showLoadingError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("O-oops! The save data has been corrupted..."
+                + "I guess I owe you one, so let me off this time, okay? I'll start you off with a clean list.");
     }
 
     /**

@@ -79,7 +79,9 @@ public class StorageTest {
             assertEquals(expected, actual);
             fail();
         } catch (IllegalArgumentException e) {
-            assertNull(e.getMessage());
+            assertEquals("O-oops! The save data has been corrupted..."
+                    + "I guess I owe you one, so let me off this time, okay? "
+                    + "I'll start you off with a clean list.", e.getMessage());
         }
     }
 

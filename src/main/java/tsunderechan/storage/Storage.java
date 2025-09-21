@@ -15,6 +15,7 @@ import tsunderechan.task.Event;
 import tsunderechan.task.Task;
 import tsunderechan.task.TaskList;
 import tsunderechan.task.Todo;
+import tsunderechan.ui.Ui;
 
 
 /**
@@ -142,7 +143,7 @@ public class Storage {
             }
             break;
         default:
-            throw new IllegalArgumentException("Oopsie! Save data corrupted, tee hee?");
+            Ui.showLoadingError();
         }
     }
 }
