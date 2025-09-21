@@ -1,10 +1,10 @@
 package tsunderechan.command;
 
+import java.io.IOException;
+
 import tsunderechan.storage.Storage;
 import tsunderechan.task.TaskList;
 import tsunderechan.ui.Ui;
-
-import java.io.IOException;
 
 /**
  * Represents a command to add a deadline task when executed.

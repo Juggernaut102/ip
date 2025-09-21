@@ -1,7 +1,6 @@
 package tsunderechan.ui;
 
 import java.util.List;
-import java.util.Scanner;
 
 import tsunderechan.exception.InsufficientInformationException;
 import tsunderechan.task.Task;
@@ -138,6 +137,13 @@ public class Ui {
      */
     public void showInvalidIndexError() throws IllegalArgumentException {
         throw new IllegalArgumentException("Index is out of bounds, dummy!");
+    }
+
+    /**
+     * Throws an IllegalArgumentException when getIcon method doesn't return T, D or E
+     */
+    public void showInvalidIconError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("Somehow, the icon of the task isn't T, D or E...");
     }
 
     /**

@@ -1,10 +1,10 @@
 package tsunderechan.task;
 
-import tsunderechan.ui.Ui;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import tsunderechan.ui.Ui;
 
 /**
  * Represents a deadline task. It has a description, and a timing to be completed by.

@@ -1,6 +1,5 @@
 package tsunderechan.parser;
 
-import java.util.Locale;
 import java.util.Scanner;
 
 import tsunderechan.command.AddDeadlineCommand;
@@ -9,8 +8,8 @@ import tsunderechan.command.AddTodoCommand;
 import tsunderechan.command.Command;
 import tsunderechan.command.DeleteCommand;
 import tsunderechan.command.ElPsyCongrooCommand;
-import tsunderechan.command.ExitCommand;
 import tsunderechan.command.EmptyCommand;
+import tsunderechan.command.ExitCommand;
 import tsunderechan.command.FindCommand;
 import tsunderechan.command.InvalidCommand;
 import tsunderechan.command.ListCommand;
