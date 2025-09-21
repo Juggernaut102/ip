@@ -1,10 +1,10 @@
 package tsunderechan.task;
 
-import tsunderechan.ui.Ui;
-
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+
+import tsunderechan.ui.Ui;
 
 /**
  * Represents an Event task. It has a description, and a timing from x to y.

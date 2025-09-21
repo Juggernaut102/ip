@@ -2,7 +2,6 @@ package tsunderechan.task;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import tsunderechan.ui.Ui;
 
@@ -191,6 +190,8 @@ public class TaskList {
                 case "E":
                     detectEventDuplicates((Event) task, descriptors[1], descriptors[2]);
                     break;
+                default:
+                    ui.showInvalidIconError();
                 }
             }
         }

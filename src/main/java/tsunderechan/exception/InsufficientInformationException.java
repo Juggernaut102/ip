@@ -1,7 +1,5 @@
 package tsunderechan.exception;
 
-import tsunderechan.ui.Ui;
-
 /**
  * Represents an Exception that is thrown when user does not provide enough arguments.
  */

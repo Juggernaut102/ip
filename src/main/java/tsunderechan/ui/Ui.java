@@ -1,7 +1,6 @@
 package tsunderechan.ui;
 
 import java.util.List;
-import java.util.Scanner;
 
 import tsunderechan.exception.InsufficientInformationException;
 import tsunderechan.task.Task;
@@ -25,6 +24,39 @@ public class Ui {
     public String showGoodbye() {
         return "Hmph, done already? D-don't talk to me anymore, you idiot!\n"
                 + "It's not l-like I enjoyed talking to you or anything...";
+    }
+
+    /**
+     * Returns a String when user types in "El Psy Congroo".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showElPsyCongroo() {
+        return "How the heck did you come up with that? W-well, I guess it's kind of cool...";
+    }
+
+    /**
+     * Returns a String when user types in "The world is ending".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showWorldIsEnding() {
+        return "*rolls eyes\nDid you go to May Queen again? Enough nonsense, let's get to work.";
+    }
+
+    /**
+     * Returns a String when user types in "Steins Gate".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showSteinsGate() {
+        return "A-are we there yet?";
+    }
+
+    /**
+     * Returns a String when user types in "i am mad scientist".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showMadScientist() {
+        return "Yes, yes, I am aware. "
+                + "Now if you don't mind, could you let the actual scientist here focus, please?";
     }
 
     /**
@@ -105,6 +137,13 @@ public class Ui {
      */
     public void showInvalidIndexError() throws IllegalArgumentException {
         throw new IllegalArgumentException("Index is out of bounds, dummy!");
+    }
+
+    /**
+     * Throws an IllegalArgumentException when getIcon method doesn't return T, D or E
+     */
+    public void showInvalidIconError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("Somehow, the icon of the task isn't T, D or E...");
     }
 
     /**

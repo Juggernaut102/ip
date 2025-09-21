@@ -23,6 +23,7 @@ public class DialogBox extends HBox {
     private Label dialog;
     @FXML
     private ImageView displayPicture;
+    private Image madScientist = new Image(this.getClass().getResourceAsStream("/images/Mad Scientist.jpg"));
 
     private DialogBox(String text, Image img) {
         try {
@@ -52,8 +53,10 @@ public class DialogBox extends HBox {
     /**
      * Returns a new dialog box containing user image and user input text.
      */
-    public static DialogBox getUserDialog(String text, Image img) {
-        return new DialogBox(text, img);
+    public static DialogBox getUserDialog(String text, Image img, String commandType) {
+        var db = new DialogBox(text, img);
+        db.changeDialogPicture(commandType);
+        return db;
     }
 
     /**
@@ -76,6 +79,9 @@ public class DialogBox extends HBox {
         return db;
     }
 
+    /**
+     * Changes the style of the dialog box depending on the command
+     */
     private void changeDialogStyle(String commandType) {
         switch(commandType) {
         case "AddDeadlineCommand", "AddEventCommand", "AddTodoCommand":
@@ -86,6 +92,19 @@ public class DialogBox extends HBox {
             break;
         case "InvalidCommand":
             dialog.getStyleClass().add("error-label");
+            break;
+        default:
+            // Do nothing
+        }
+    }
+
+    /**
+     * Changes the picture of the dialog box depending on the command
+     */
+    private void changeDialogPicture(String commandType) {
+        switch (commandType) {
+        case "ElPsyCongrooCommand", "MadScientistCommand", "SteinsGateCommand", "WorldIsEndingCommand":
+            displayPicture.setImage(madScientist);
             break;
         default:
             // Do nothing

@@ -30,7 +30,7 @@ public class Main extends Application {
 
             Scene scene = new Scene(ap);
             stage.setScene(scene);
-            fxmlLoader.<MainWindow>getController().setTsundereChan(tsundereChan);  // inject the TsundereChan instance
+            fxmlLoader.<MainWindow>getController().setTsundereChan(tsundereChan); // inject the TsundereChan instance
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

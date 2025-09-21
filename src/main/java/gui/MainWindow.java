@@ -28,6 +28,9 @@ public class MainWindow extends AnchorPane {
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/Okabe.jpg"));
     private Image tsundereImage = new Image(this.getClass().getResourceAsStream("/images/Kurisu.jpg"));
 
+    /**
+     * Initializes the app with GUI and welcome message.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
@@ -52,7 +55,7 @@ public class MainWindow extends AnchorPane {
         String response = tsundereChan.getResponse(input);
         String commandType = tsundereChan.getCommandType();
         dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
+                DialogBox.getUserDialog(input, userImage, commandType),
                 DialogBox.getTsundereDialog(response, tsundereImage, commandType)
         );
         userInput.clear();
