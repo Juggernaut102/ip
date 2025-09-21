@@ -28,17 +28,15 @@ public class Ui {
     }
 
     /**
-     * Prints a save corrupted message.
+     * Prints a corrupted save data message.
      */
-    public String showLoadingError() {
-        return "O-oops! The save data has been corrupted...\n"
-                + "I guess I owe you one, so let me off this time, okay?";
+    public static void showLoadingError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("O-oops! The save data has been corrupted..."
+                + "I guess I owe you one, so let me off this time, okay? I'll start you off with a clean list.");
     }
 
     /**
      * Prints a prompt to the user to tell them proper input format.
-     *
-     * @throws IllegalArgumentException All the time.
      */
     public void showMarkError() throws IllegalArgumentException {
         throw new IllegalArgumentException("You must have a task number after mark!");
@@ -47,8 +45,8 @@ public class Ui {
     /**
      * Prints a prompt to the user when marking an already marked task.
      */
-    public String showAlreadyMarkedError() {
-        return "You've already asked me to mark it, geez!";
+    public void showAlreadyMarkedError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("You've already asked me to mark it, geez!");
     }
 
     /**
@@ -64,8 +62,6 @@ public class Ui {
 
     /**
      * Prints a prompt to the user to tell them proper input format.
-     *
-     * @throws IllegalArgumentException All the time.
      */
     public void showUnmarkError() throws IllegalArgumentException {
         throw new IllegalArgumentException("You must have a task number after unmark!");
@@ -74,8 +70,8 @@ public class Ui {
     /**
      * Prints a prompt to the user when unmarking an already unmarked task.
      */
-    public String showAlreadyUnmarkedError() {
-        return "It's not even done yet, geeez!";
+    public void showAlreadyUnmarkedError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("It's not even done yet, geeez!");
     }
 
     /**
