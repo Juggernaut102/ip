@@ -11,7 +11,6 @@ import java.time.format.DateTimeParseException;
  */
 public class Deadline extends Task {
     protected String by;
-    protected LocalDateTime dateTime;
 
     /**
      * Instantiates a Deadline object.
@@ -23,7 +22,7 @@ public class Deadline extends Task {
         super(description);
         try {
             DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-            dateTime = LocalDateTime.parse(by, inputFormatter);
+            LocalDateTime dateTime = LocalDateTime.parse(by, inputFormatter);
             this.by = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
         } catch (DateTimeParseException e) {
             Ui.showDateTimeFormatError("by");
@@ -40,14 +39,12 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String by, boolean isDone) {
         super(description, isDone);
-        this.by = by;
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         try {
-            dateTime = LocalDateTime.parse(by, inputFormatter);
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            LocalDateTime dateTime = LocalDateTime.parse(by, inputFormatter);
             this.by = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
         } catch (DateTimeParseException e) {
-            // Warn user that format is wrong, but otherwise does nothing
-            // Ui.showDateTimeFormatError("by");
+            Ui.showDateTimeFormatError("by");
         }
     }
 
