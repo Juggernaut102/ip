@@ -109,6 +109,9 @@ public class Parser {
         }
         String str = sc.nextLine().trim();
         String[] deadline = str.split("/by", 2);
+        if (deadline[0].isEmpty()) {
+            ui.showInsufficientInformationError(command);
+        }
         if (deadline.length < 2) {
             ui.showDeadlineInvalidFormatError();
         }
@@ -122,6 +125,9 @@ public class Parser {
         }
         String str = sc.nextLine().trim();
         String[] event = str.split("/from|/to", 3);
+        if (event[0].isEmpty()) {
+            ui.showInsufficientInformationError(command);
+        }
         if (event.length < 3) {
             ui.showEventInvalidFormatError();
         }
