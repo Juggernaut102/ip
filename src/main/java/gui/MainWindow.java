@@ -60,6 +60,8 @@ public class MainWindow extends AnchorPane {
 
     /**
      * Delays exit of app so the goodbye message is visible
+     *
+     * Method written with help of ChatGPT
      */
     private void onExitCommand() {
         javafx.animation.PauseTransition delay =
