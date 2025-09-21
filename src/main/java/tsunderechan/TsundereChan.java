@@ -4,7 +4,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import tsunderechan.command.Command;
-import tsunderechan.exception.InsufficientInformationException;
 import tsunderechan.parser.Parser;
 import tsunderechan.storage.Storage;
 import tsunderechan.task.TaskList;
@@ -18,6 +17,7 @@ public class TsundereChan {
     private final Storage storage;
     private Ui ui;
     private String commandType;
+    private String loadErrorMessage;
 
     /**
      * Instantiates a TsundereChan object, loading from the specified filePath.
@@ -34,8 +34,8 @@ public class TsundereChan {
         } catch (FileNotFoundException e) {
             tasks = new TaskList();
         } catch (IllegalArgumentException e) {
-            ui.showLoadingError();
             tasks = new TaskList();
+            loadErrorMessage = e.getMessage();
         }
     }
 
@@ -61,9 +61,9 @@ public class TsundereChan {
     }
 
     /**
-     * Returns a String showing the welcome message
+     * Returns a String with contained load error message.
      */
-    public static String showWelcome() {
-        return Ui.showWelcome();
+    public String getLoadErrorMessage() {
+        return loadErrorMessage;
     }
 }

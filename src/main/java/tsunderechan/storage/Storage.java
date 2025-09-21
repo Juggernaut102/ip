@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -13,6 +15,7 @@ import tsunderechan.task.Event;
 import tsunderechan.task.Task;
 import tsunderechan.task.TaskList;
 import tsunderechan.task.Todo;
+import tsunderechan.ui.Ui;
 
 
 /**
@@ -102,6 +105,8 @@ public class Storage {
      */
     public void stringToTasks(String input, ArrayList<Task> tasks) {
         String[] parts = input.split("\\|");
+        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a");
+
         for (int i = 0; i < parts.length; i++) {
             parts[i] = parts[i].trim();
         }
@@ -114,21 +119,31 @@ public class Storage {
             }
             break;
         case "D":
+            // Format date and time
+            LocalDateTime dateTimeBy = LocalDateTime.parse(parts[3], inputFormatter);
+            String by = dateTimeBy.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+
             if (parts[1].equals("0")) {
-                tasks.add(new Deadline(parts[2], parts[3], false));
+                tasks.add(new Deadline(parts[2], by, false));
             } else {
-                tasks.add(new Deadline(parts[2], parts[3], true));
+                tasks.add(new Deadline(parts[2], by, true));
             }
             break;
         case "E":
+            // Format date and time
+            LocalDateTime dateTimeFrom = LocalDateTime.parse(parts[3], inputFormatter);
+            LocalDateTime dateTimeTo = LocalDateTime.parse(parts[4], inputFormatter);
+            String from = dateTimeFrom.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+            String to = dateTimeTo.format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+
             if (parts[1].equals("0")) {
-                tasks.add(new Event(parts[2], parts[3], parts[4], false));
+                tasks.add(new Event(parts[2], from, to, false));
             } else {
-                tasks.add(new Event(parts[2], parts[3], parts[4], true));
+                tasks.add(new Event(parts[2], from, to, true));
             }
             break;
         default:
-            throw new IllegalArgumentException();
+            Ui.showLoadingError();
         }
     }
 }

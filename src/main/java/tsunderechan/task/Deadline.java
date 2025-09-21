@@ -4,12 +4,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 
+import tsunderechan.ui.Ui;
+
 /**
  * Represents a deadline task. It has a description, and a timing to be completed by.
  */
 public class Deadline extends Task {
     protected String by;
-    protected LocalDateTime dateTime;
 
     /**
      * Instantiates a Deadline object.
@@ -19,14 +20,12 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String by) {
         super(description);
-        this.by = by;
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         try {
-            dateTime = LocalDateTime.parse(by, inputFormatter);
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            LocalDateTime dateTime = LocalDateTime.parse(by, inputFormatter);
             this.by = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
         } catch (DateTimeParseException e) {
-            // Warn user that format is wrong, but otherwise does nothing
-            // Ui.showDateTimeFormatError("by");
+            Ui.showDateTimeFormatError("by");
         }
     }
 
@@ -40,14 +39,12 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String by, boolean isDone) {
         super(description, isDone);
-        this.by = by;
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         try {
-            dateTime = LocalDateTime.parse(by, inputFormatter);
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+            LocalDateTime dateTime = LocalDateTime.parse(by, inputFormatter);
             this.by = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
         } catch (DateTimeParseException e) {
-            // Warn user that format is wrong, but otherwise does nothing
-            // Ui.showDateTimeFormatError("by");
+            Ui.showDateTimeFormatError("by");
         }
     }
 

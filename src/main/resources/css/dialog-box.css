@@ -24,6 +24,9 @@
 
 .error-label {
     -fx-background-color: lightpink;
+    -fx-text-fill: #d8000c;
+    fx-border-color: #d8000c;
+    -fx-font-weight: bold;
 }
 
 #displayPicture {

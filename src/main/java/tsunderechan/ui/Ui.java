@@ -1,7 +1,6 @@
 package tsunderechan.ui;
 
 import java.util.List;
-import java.util.Scanner;
 
 import tsunderechan.exception.InsufficientInformationException;
 import tsunderechan.task.Task;
@@ -28,17 +27,48 @@ public class Ui {
     }
 
     /**
-     * Prints a save corrupted message.
+     * Returns a String when user types in "El Psy Congroo".
+     * This is an Easter egg for users that recognise the characters in the profiles.
      */
-    public String showLoadingError() {
-        return "O-oops! The save data has been corrupted...\n"
-                + "I guess I owe you one, so let me off this time, okay?";
+    public String showElPsyCongroo() {
+        return "How the heck did you come up with that? W-well, I guess it's kind of cool...";
+    }
+
+    /**
+     * Returns a String when user types in "The world is ending".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showWorldIsEnding() {
+        return "*rolls eyes\nDid you go to May Queen again? Enough nonsense, let's get to work.";
+    }
+
+    /**
+     * Returns a String when user types in "Steins Gate".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showSteinsGate() {
+        return "A-are we there yet?";
+    }
+
+    /**
+     * Returns a String when user types in "i am mad scientist".
+     * This is an Easter egg for users that recognise the characters in the profiles.
+     */
+    public String showMadScientist() {
+        return "Yes, yes, I am aware. "
+                + "Now if you don't mind, could you let the actual scientist here focus, please?";
+    }
+
+    /**
+     * Prints a corrupted save data message.
+     */
+    public static void showLoadingError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("O-oops! The save data has been corrupted..."
+                + "I guess I owe you one, so let me off this time, okay? I'll start you off with a clean list.");
     }
 
     /**
      * Prints a prompt to the user to tell them proper input format.
-     *
-     * @throws IllegalArgumentException All the time.
      */
     public void showMarkError() throws IllegalArgumentException {
         throw new IllegalArgumentException("You must have a task number after mark!");
@@ -47,8 +77,8 @@ public class Ui {
     /**
      * Prints a prompt to the user when marking an already marked task.
      */
-    public String showAlreadyMarkedError() {
-        return "You've already asked me to mark it, geez!";
+    public void showAlreadyMarkedError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("You've already asked me to mark it, geez!");
     }
 
     /**
@@ -64,8 +94,6 @@ public class Ui {
 
     /**
      * Prints a prompt to the user to tell them proper input format.
-     *
-     * @throws IllegalArgumentException All the time.
      */
     public void showUnmarkError() throws IllegalArgumentException {
         throw new IllegalArgumentException("You must have a task number after unmark!");
@@ -74,8 +102,8 @@ public class Ui {
     /**
      * Prints a prompt to the user when unmarking an already unmarked task.
      */
-    public String showAlreadyUnmarkedError() {
-        return "It's not even done yet, geeez!";
+    public void showAlreadyUnmarkedError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("It's not even done yet, geeez!");
     }
 
     /**
@@ -109,6 +137,13 @@ public class Ui {
      */
     public void showInvalidIndexError() throws IllegalArgumentException {
         throw new IllegalArgumentException("Index is out of bounds, dummy!");
+    }
+
+    /**
+     * Throws an IllegalArgumentException when getIcon method doesn't return T, D or E
+     */
+    public void showInvalidIconError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("Somehow, the icon of the task isn't T, D or E...");
     }
 
     /**
@@ -163,7 +198,7 @@ public class Ui {
     }
 
     /**
-     * Prints a prompt to the user to tell them proper input format.
+     * Prints a prompt to the user to tell them to include a keyword.
      *
      * @throws InsufficientInformationException All the time.
      */
@@ -185,10 +220,19 @@ public class Ui {
     /**
      * Prints a prompt to the user to tell them proper input format for time and dates.
      */
-    public static String showDateTimeFormatError(String context) {
-        return "I'll only say this once so listen up!\n"
-                + "If you want the " + context + " section to be understood as a date and time,\n"
-                + "you got to write it as yyyy-MM-dd HH:mm, got it?";
+    public static void showDateTimeFormatError(String context) throws IllegalArgumentException {
+        throw new IllegalArgumentException("You have to write the " + context
+                + " section as a valid yyyy-MM-dd HH:mm,"
+                + " otherwise I can't understand it as a date and time, got it?");
+    }
+
+    /**
+     * Prints a prompt to user telling them that date and time entered is invalid.
+     * Used when user inputs an event with end date earlier than start time.
+     */
+    public static void showDateTimeInvalidError() throws IllegalArgumentException {
+        throw new IllegalArgumentException("The from time must obviously be after the to time, you idiot! "
+                + "Do you need to go back to grade school? Or...is time travel involved...?");
     }
 
     /**

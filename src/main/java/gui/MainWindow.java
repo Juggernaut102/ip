@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import tsunderechan.TsundereChan;
+import tsunderechan.ui.Ui;
 
 /**
  * Controller for the main GUI.
@@ -27,15 +28,21 @@ public class MainWindow extends AnchorPane {
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/Okabe.jpg"));
     private Image tsundereImage = new Image(this.getClass().getResourceAsStream("/images/Kurisu.jpg"));
 
+    /**
+     * Initializes the app with GUI and welcome message.
+     */
     @FXML
     public void initialize() {
         scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
-        dialogContainer.getChildren().add(DialogBox.getTsundereDialog(TsundereChan.showWelcome(), tsundereImage));
+        dialogContainer.getChildren().add(DialogBox.getTsundereDialog(Ui.showWelcome(), tsundereImage));
     }
 
     /** Injects the TsundereChan instance */
     public void setTsundereChan(TsundereChan tc) {
         tsundereChan = tc;
+        if (tc.getLoadErrorMessage() != null) {
+            showLoadingError(tc.getLoadErrorMessage());
+        }
     }
 
     /**
@@ -48,7 +55,7 @@ public class MainWindow extends AnchorPane {
         String response = tsundereChan.getResponse(input);
         String commandType = tsundereChan.getCommandType();
         dialogContainer.getChildren().addAll(
-                DialogBox.getUserDialog(input, userImage),
+                DialogBox.getUserDialog(input, userImage, commandType),
                 DialogBox.getTsundereDialog(response, tsundereImage, commandType)
         );
         userInput.clear();
@@ -59,8 +66,17 @@ public class MainWindow extends AnchorPane {
     }
 
     /**
+     * Creates a TsundereChan dialog box with loading error dialog message when there is a loading error.
+     */
+    @FXML
+    public void showLoadingError(String message) {
+        dialogContainer.getChildren().add(
+                DialogBox.getTsundereDialog(message, tsundereImage, "InvalidCommand")
+        );
+    }
+
+    /**
      * Delays exit of app so the goodbye message is visible
-     *
      * Method written with help of ChatGPT
      */
     private void onExitCommand() {

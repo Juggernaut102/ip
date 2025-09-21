@@ -2,7 +2,6 @@ package tsunderechan.task;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import tsunderechan.ui.Ui;
 
@@ -104,7 +103,7 @@ public class TaskList {
         }
         Task task = tasks.get(index - 1);
         if (task.isDone) {
-            return ui.showAlreadyMarkedError();
+            ui.showAlreadyMarkedError();
         }
         task.mark();
         return ui.showMarkTask(task);
@@ -123,7 +122,7 @@ public class TaskList {
         }
         Task task = tasks.get(index - 1);
         if (!task.isDone) {
-            return ui.showAlreadyUnmarkedError();
+            ui.showAlreadyUnmarkedError();
         }
         task.unmark();
         return ui.showUnmarkTask(task);
@@ -161,8 +160,8 @@ public class TaskList {
     }
 
     /**
-     * Detects duplicate task when adding a new task.
-     * A duplicate task means all descriptors are the same.
+     * Detects duplicate task when adding a new task, and returns an exception if found.
+     * A task is a duplicate if all descriptors are the same.
      *
      * @param typeOfNewTask the icon of the new task to be added
      * @param descriptors Depends on the task.
@@ -191,6 +190,8 @@ public class TaskList {
                 case "E":
                     detectEventDuplicates((Event) task, descriptors[1], descriptors[2]);
                     break;
+                default:
+                    ui.showInvalidIconError();
                 }
             }
         }
