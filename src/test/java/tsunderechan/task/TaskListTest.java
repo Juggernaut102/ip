@@ -45,6 +45,20 @@ public class TaskListTest {
     }
 
     @Test
+    public void mark_alreadyMarked_exceptionThrown() {
+        try {
+            TaskListStub actual = new TaskListStub();
+            TaskList actual2 = actual.getTodoTask();
+            actual2.mark(1);
+            actual2.mark(1);
+            assertEquals(new TaskListStub(), actual);
+            fail(); // the test should not reach this line
+        } catch (IllegalArgumentException e) {
+            assertEquals("You've already asked me to mark it, geez!", e.getMessage());
+        }
+    }
+
+    @Test
     public void mark_todoTask_success() {
         TaskListStub actual = new TaskListStub();
         TaskList actual2 = actual.getTodoTask();

@@ -104,7 +104,7 @@ public class TaskList {
         }
         Task task = tasks.get(index - 1);
         if (task.isDone) {
-            return ui.showAlreadyMarkedError();
+            ui.showAlreadyMarkedError();
         }
         task.mark();
         return ui.showMarkTask(task);
@@ -123,7 +123,7 @@ public class TaskList {
         }
         Task task = tasks.get(index - 1);
         if (!task.isDone) {
-            return ui.showAlreadyUnmarkedError();
+            ui.showAlreadyUnmarkedError();
         }
         task.unmark();
         return ui.showUnmarkTask(task);
