@@ -1,5 +1,7 @@
 package tsunderechan.task;
 
+import tsunderechan.ui.Ui;
+
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
@@ -19,14 +21,12 @@ public class Deadline extends Task {
      */
     public Deadline(String description, String by) {
         super(description);
-        this.by = by;
-        DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         try {
+            DateTimeFormatter inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
             dateTime = LocalDateTime.parse(by, inputFormatter);
             this.by = dateTime.format(DateTimeFormatter.ofPattern("MMM d yyyy hh:mm a"));
         } catch (DateTimeParseException e) {
-            // Warn user that format is wrong, but otherwise does nothing
-            // Ui.showDateTimeFormatError("by");
+            Ui.showDateTimeFormatError("by");
         }
     }
 

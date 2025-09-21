@@ -161,8 +161,8 @@ public class TaskList {
     }
 
     /**
-     * Detects duplicate task when adding a new task.
-     * A duplicate task means all descriptors are the same.
+     * Detects duplicate task when adding a new task, and returns an exception if found.
+     * A task is a duplicate if all descriptors are the same.
      *
      * @param typeOfNewTask the icon of the new task to be added
      * @param descriptors Depends on the task.
