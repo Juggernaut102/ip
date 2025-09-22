@@ -2,13 +2,15 @@
 
 ![Product Screenshot](/docs/Ui.png.png)
 
-TsundereChan is a desktop app for managing tasks, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).  
+TsundereChan is a desktop app for managing tasks, optimized for use via a Command Line Interface (CLI)
+while still having the benefits of a Graphical User Interface (GUI).
 If you like getting verbally abused while managing your daily tasks, this is the app for you!
 
 
 ## Features
 - Words in `<UPPER_CASE>` are the parameters to be supplied by users
 - all inputs are non-case sensitive.
+
 
 ## Adding todos: `todo`
 
@@ -21,6 +23,7 @@ Format: `todo <TASK_NAME>`
 Example: 
 - `todo homework`
 - `TODO workout`
+
 
 ## Adding deadlines: `deadline`
 
@@ -48,11 +51,13 @@ Example:
 - `event CCA /from 2025-09-21 18:00 /to 2025-09-21 20:00`
 - `EVENT PRESENTATION /FROM 2025-09-22 15:00 /TO 2025-09-22 16:00`
 
+
 ## Listing all tasks: `list`
 
 Shows a list of all tasks added so far.
 
 Format: `list`
+
 
 ## Marking task as complete: `mark`
 
@@ -66,6 +71,7 @@ Format: `mark <INDEX>`
 Example:
 - `mark 2` marks the 2nd task in the list
 
+
 ## Unmark task as incomplete: `unmark`
 
 Unmarks a specified task as incomplete.
@@ -78,6 +84,7 @@ Format: `unmark <INDEX>`
 Example:
 - `unmark 2` unmarks the 2nd task in the list
 
+
 ## Deleting a task: `delete`
 
 Deletes a specified task from the list.
@@ -89,6 +96,7 @@ Format: `delete <INDEX>`
 
 Example:
 - `delete 2` deletes the 2nd task in the list
+
 
 ## Finding a task: `find`
 
@@ -110,6 +118,7 @@ Example: `find home` returns `homework` and `take home assignment`
 Exits the program.
 
 Format: `bye`
+
 
 ## Saving data
 All data is automatically saved into hard disk after any command that changes data.  
