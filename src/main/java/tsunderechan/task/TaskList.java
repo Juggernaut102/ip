@@ -2,6 +2,7 @@ package tsunderechan.task;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 import tsunderechan.ui.Ui;
 
@@ -153,7 +154,13 @@ public class TaskList {
         List<Task> results = new ArrayList<>();
         String lowerKeyword = keyword.toLowerCase();
         for (Task task : tasks) {
+            // compare whole description first
+            if (task.getDescription().toLowerCase().startsWith(lowerKeyword)) {
+                results.add(task);
+                continue;
+            }
             String[] words = task.getDescription().toLowerCase().split("\\s+");
+            // compare each word
             for (String word : words) {
                 if (word.startsWith(lowerKeyword)) {
                     results.add(task);
