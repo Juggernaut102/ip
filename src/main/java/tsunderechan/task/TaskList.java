@@ -147,13 +147,18 @@ public class TaskList {
     /**
      * Returns tasks whose descriptions match the keyword.
      *
-     * @param keyword Keyword to match with description of tasks..
+     * @param keyword Keyword to match with description of tasks.
      */
     public List<Task> find(String keyword) {
         List<Task> results = new ArrayList<>();
+        String lowerKeyword = keyword.toLowerCase();
         for (Task task : tasks) {
-            if (task.getDescription().contains(keyword)) {
-                results.add(task);
+            String[] words = task.getDescription().toLowerCase().split("\\s+");
+            for (String word : words) {
+                if (word.startsWith(lowerKeyword)) {
+                    results.add(task);
+                    break;
+                }
             }
         }
         return results;
