@@ -45,7 +45,7 @@ Time must be in the format of `yyyy-mm-dd HH:mm`
 Duplicate tasks (tasks with same name and time) will be rejected.
 
 Format: `deadline <TASK_NAME> /from <TIME> /to <TIME>`  
-**Parameters' orders may not be switched around.**
+**Parameters' order may not be switched around.**
 
 Example:
 - `event CCA /from 2025-09-21 18:00 /to 2025-09-21 20:00`
@@ -72,7 +72,7 @@ Example:
 - `mark 2` marks the 2nd task in the list
 
 
-## Unmark task as incomplete: `unmark`
+## Unmarking task as incomplete: `unmark`
 
 Unmarks a specified task as incomplete.
 
