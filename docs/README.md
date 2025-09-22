@@ -1,6 +1,6 @@
 # TsundereChan User Guide
 
-![Product Screenshot](docs/Ui.png.png)
+![Product Screenshot](/docs/Ui.png.png)
 
 TsundereChan is a desktop app for managing tasks, optimized for use via a Command Line Interface (CLI) while still having the benefits of a Graphical User Interface (GUI).  
 If you like getting verbally abused while managing your daily tasks, this is the app for you!
