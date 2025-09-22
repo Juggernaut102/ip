@@ -123,3 +123,12 @@ Format: `bye`
 ## Saving data
 All data is automatically saved into hard disk after any command that changes data.  
 There is no need to save manually.
+
+
+## Credits
+App icon: taken from https://www.reddit.com/r/Kurisutina/comments/m4d441/embarrassed_kurisu/  
+User profile picture: taken from https://wall.alphacoders.com/big.php?i=745340  
+User profile picture secondary: taken from https://in.pinterest.com/pin/416794140489777976/  
+TsundereChan profile picture: taken from https://hipwallpaper.com/view/kurisu-makise-wallpapers/23781
+
+
