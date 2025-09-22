@@ -2,7 +2,6 @@ package tsunderechan.task;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 import tsunderechan.ui.Ui;
 
